@@ -78,6 +78,7 @@ public class MandatRest {
         return new PersonnelConverter().toVo(personnel);
     } 
    
+    
     @PostMapping("/projet/")
     public ProjetVo creerProjet(@RequestBody ProjetVo projetVo){
         ProjetConverter projetConverter = new ProjetConverter();

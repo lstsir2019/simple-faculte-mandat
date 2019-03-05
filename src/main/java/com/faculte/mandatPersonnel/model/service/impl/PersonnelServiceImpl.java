@@ -37,7 +37,7 @@ public class PersonnelServiceImpl implements PersonnelService {
         if (p != null) {
             return null;
         } else {
-            TypePersonnel tp = typePersonnelService.createTypePersonnel(personnel.getTypePersonnel().getLibelle());
+            TypePersonnel tp =typePersonnelService.createTypePersonnel(personnel.getTypePersonnel().getLibelle());
             if (tp != null) {
                 personnel.setTypePersonnel(tp);
                 personnelDao.save(personnel);
