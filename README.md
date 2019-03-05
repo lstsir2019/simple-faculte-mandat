@@ -1,1 +1,0 @@
-# simple-faculte-mandat
