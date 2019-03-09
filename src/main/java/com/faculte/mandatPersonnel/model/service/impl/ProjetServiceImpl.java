@@ -52,6 +52,11 @@ public class ProjetServiceImpl  implements ProjetService{
         }
     }
 
+@Override
+    public List<Projet> findAll() {
+        return projetDao.findAll();
+    }
+    
 
     
     public ProjetDao getProjetDao() {
@@ -70,6 +75,7 @@ public class ProjetServiceImpl  implements ProjetService{
         this.sousProjetService = sousProjetService;
     }
 
+    
     
     
     

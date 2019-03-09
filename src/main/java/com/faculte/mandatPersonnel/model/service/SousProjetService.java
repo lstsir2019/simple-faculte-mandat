@@ -5,7 +5,9 @@
  */
 package com.faculte.mandatPersonnel.model.service;
 
+import com.faculte.mandatPersonnel.bean.Projet;
 import com.faculte.mandatPersonnel.bean.SousProjet;
+import java.util.List;
 
 
 /**
@@ -15,6 +17,6 @@ import com.faculte.mandatPersonnel.bean.SousProjet;
 public interface SousProjetService {
 
     public SousProjet findByLibelleSP(String libelleSP);
-    //public List<SousProjet> findByProjet(Projet projet);
+    public List<SousProjet> findByProjetLibelleP(String libelleP);
     public int creerSousProjet(SousProjet sousProjet);
 }

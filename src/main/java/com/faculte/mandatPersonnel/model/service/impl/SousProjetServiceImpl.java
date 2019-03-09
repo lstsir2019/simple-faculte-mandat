@@ -5,9 +5,11 @@
  */
 package com.faculte.mandatPersonnel.model.service.impl;
 
+import com.faculte.mandatPersonnel.bean.Projet;
 import com.faculte.mandatPersonnel.bean.SousProjet;
 import com.faculte.mandatPersonnel.model.dao.SousProjetDao;
 import com.faculte.mandatPersonnel.model.service.SousProjetService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,10 +27,10 @@ public class SousProjetServiceImpl implements SousProjetService{
     @Autowired
     private SousProjetDao sousProjetDao;
 
-//    @Override
-//    public List<SousProjet> findByProjet(Projet projet) {
-//        return sousProjetDao.findByProjet(projet);
-//    }
+    @Override
+    public List<SousProjet> findByProjetLibelleP(String libelleP) {
+        return sousProjetDao.findByProjetLibelleP(libelleP);
+    }
 
     @Override
     public SousProjet findByLibelleSP(String libelleSP) {
