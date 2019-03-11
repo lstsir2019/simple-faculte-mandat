@@ -5,7 +5,6 @@
  */
 package com.faculte.mandatPersonnel.model.service;
 
-import com.faculte.mandatPersonnel.bean.Projet;
 import com.faculte.mandatPersonnel.bean.SousProjet;
 import java.util.List;
 

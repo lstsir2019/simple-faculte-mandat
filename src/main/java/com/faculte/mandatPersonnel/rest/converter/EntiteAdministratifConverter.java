@@ -22,7 +22,6 @@ public class EntiteAdministratifConverter extends AbstractConverter<EntiteAdmini
             EntiteAdministratif item = new EntiteAdministratif();
             item.setId(vo.getId());
             item.setEntite(vo.getEntite());
-            item.setSousProjet(new SousProjetConverter().toItem(vo.getSousProjetVo()));
             return item;
         }
     }
@@ -36,7 +35,6 @@ public class EntiteAdministratifConverter extends AbstractConverter<EntiteAdmini
             EntiteAdministratifVo vo =new EntiteAdministratifVo();
             vo.setId(item.getId());
             vo.setEntite(item.getEntite());
-            vo.setSousProjetVo(new SousProjetConverter().toVo(item.getSousProjet()));
             return vo;
         }
     }

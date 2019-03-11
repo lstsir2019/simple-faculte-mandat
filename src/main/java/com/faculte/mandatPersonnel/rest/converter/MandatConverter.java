@@ -12,16 +12,16 @@ import com.faculte.mandatPersonnel.rest.vo.MandatVo;
  *
  * @author abdou
  */
-public class MandatConverter extends AbstractConverter<Mandat, MandatVo> {
-
-    @Override
-    public Mandat toItem(MandatVo vo) {
-        return null ;
-    }
-
-    @Override
-    public MandatVo toVo(Mandat item) {
-        return null ;
-    }
-
-}
+//public class MandatConverter extends AbstractConverter<Mandat, MandatVo> {
+//
+//    @Override
+//    public Mandat toItem(MandatVo vo) {
+//        return null ;
+//    }
+//
+//    @Override
+//    public MandatVo toVo(Mandat item) {
+//        return null ;
+//    }
+//
+//}

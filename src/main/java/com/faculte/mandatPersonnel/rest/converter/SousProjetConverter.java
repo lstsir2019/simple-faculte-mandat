@@ -26,7 +26,7 @@ public class SousProjetConverter extends AbstractConverter<SousProjet, SousProje
             SousProjet item = new SousProjet();
             item.setId(vo.getId());
             item.setLibelleSP(vo.getLibelleSP());
-            item.setEntiteAdministratifs(new EntiteAdministratifVo().toItem(vo.getEntiteAdministratifsVo()));
+            item.setEntiteAdministratifs(new EntiteAdministratifConverter().toItem(vo.getEntiteAdministratifsVo()));
             return item;
         }
     }

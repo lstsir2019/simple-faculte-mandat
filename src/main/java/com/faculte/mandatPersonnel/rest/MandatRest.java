@@ -17,12 +17,10 @@ import com.faculte.mandatPersonnel.model.service.TypePersonnelService;
 import com.faculte.mandatPersonnel.rest.converter.PersonnelConverter;
 import com.faculte.mandatPersonnel.rest.converter.ProjetConverter;
 import com.faculte.mandatPersonnel.rest.converter.ResponsabiliteConverter;
-import com.faculte.mandatPersonnel.rest.converter.SousProjetConverter;
 import com.faculte.mandatPersonnel.rest.converter.TypePersonnelConverter;
 import com.faculte.mandatPersonnel.rest.vo.PersonnelVo;
 import com.faculte.mandatPersonnel.rest.vo.ProjetVo;
 import com.faculte.mandatPersonnel.rest.vo.ResponsabiliteVo;
-import com.faculte.mandatPersonnel.rest.vo.SousProjetVo;
 import com.faculte.mandatPersonnel.rest.vo.TypePersonnelVo;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +37,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author abdou
  */
 @RestController()
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping({"/mandat/mandats"})
 
 public class MandatRest {
@@ -53,20 +51,16 @@ public class MandatRest {
     @Autowired
     private ProjetService projetService;
 
-    
-
-    
-
     @Autowired
     private SousProjetService sousProjetService;
+
+    @Autowired
+    private ResponsabiliteService responsabiliteService;
 
     @GetMapping("/")
     public List<ProjetVo> findAll() {
         return new ProjetConverter().toVo(projetService.findAll());
     }
-
-    @Autowired
-    private ResponsabiliteService responsabiliteService;
 
     @GetMapping("/libelleProjet/{libelleP}")
     public ProjetVo findByLibelleP(String libelleP) {
@@ -118,7 +112,6 @@ public class MandatRest {
 //        final List<SousProjet> sousProjets = sousProjetService.findByProjetLibelleP(libelleP);
 //        return new SousProjetConverter().toVo(sousProjets);
 //    }
-
     public PersonnelService getPersonnelService() {
         return personnelService;
     }
@@ -151,9 +144,6 @@ public class MandatRest {
         this.responsabiliteService = responsabiliteService;
     }
 
-   
-    
-
     public SousProjetService getSousProjetService() {
         return sousProjetService;
     }
@@ -161,6 +151,5 @@ public class MandatRest {
     public void setSousProjetService(SousProjetService sousProjetService) {
         this.sousProjetService = sousProjetService;
     }
-    
 
 }

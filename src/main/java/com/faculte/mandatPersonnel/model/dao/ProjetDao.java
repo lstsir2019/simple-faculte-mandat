@@ -6,6 +6,7 @@
 package com.faculte.mandatPersonnel.model.dao;
 
 import com.faculte.mandatPersonnel.bean.Projet;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,4 +19,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProjetDao extends JpaRepository<Projet ,Long> {
     public Projet findByLibelleP(String libelleP);
+    public List<Projet> findAll();
 }
