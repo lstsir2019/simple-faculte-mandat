@@ -42,9 +42,7 @@ public class EntiteAdministratifVo {
         this.sousProjetVo = sousProjetVo;
     }
 
-    public List<EntiteAdministratif> toItem(List<EntiteAdministratifVo> entiteAdministratifsVo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     
     
 }

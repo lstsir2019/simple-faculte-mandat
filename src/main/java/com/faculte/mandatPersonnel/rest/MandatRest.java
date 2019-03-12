@@ -10,14 +10,17 @@ import com.faculte.mandatPersonnel.bean.Personnel;
 import com.faculte.mandatPersonnel.bean.Projet;
 import com.faculte.mandatPersonnel.bean.Responsabilite;
 import com.faculte.mandatPersonnel.bean.SousProjet;
+import com.faculte.mandatPersonnel.model.service.EntiteAdministratifService;
 import com.faculte.mandatPersonnel.model.service.PersonnelService;
 import com.faculte.mandatPersonnel.model.service.ResponsabiliteService;
 import com.faculte.mandatPersonnel.model.service.SousProjetService;
 import com.faculte.mandatPersonnel.model.service.TypePersonnelService;
+import com.faculte.mandatPersonnel.rest.converter.EntiteAdministratifConverter;
 import com.faculte.mandatPersonnel.rest.converter.PersonnelConverter;
 import com.faculte.mandatPersonnel.rest.converter.ProjetConverter;
 import com.faculte.mandatPersonnel.rest.converter.ResponsabiliteConverter;
 import com.faculte.mandatPersonnel.rest.converter.TypePersonnelConverter;
+import com.faculte.mandatPersonnel.rest.vo.EntiteAdministratifVo;
 import com.faculte.mandatPersonnel.rest.vo.PersonnelVo;
 import com.faculte.mandatPersonnel.rest.vo.ProjetVo;
 import com.faculte.mandatPersonnel.rest.vo.ResponsabiliteVo;
@@ -56,6 +59,9 @@ public class MandatRest {
 
     @Autowired
     private ResponsabiliteService responsabiliteService;
+    
+    @Autowired
+    private EntiteAdministratifService entiteAdministratifService;
 
     @GetMapping("/")
     public List<ProjetVo> findAll() {
@@ -72,6 +78,10 @@ public class MandatRest {
         return new PersonnelConverter().toVo(personnelService.findByCin(cin));
     }
 
+    @GetMapping("/entiteAdministratif/{entite}")
+    public EntiteAdministratifVo findByEntite(String entite) {
+        return new EntiteAdministratifConverter().toVo(entiteAdministratifService.findByEntite(entite));
+    }
     @GetMapping("/libelle/{libelle}/")
     public TypePersonnelVo findByLibelle(@PathVariable("libelle") String libelle) {
         return new TypePersonnelConverter().toVo(typePersonnelService.findByLibelle(libelle));
