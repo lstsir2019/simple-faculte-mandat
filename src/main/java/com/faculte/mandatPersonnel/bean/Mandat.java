@@ -7,6 +7,7 @@ package com.faculte.mandatPersonnel.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,13 +31,13 @@ public class Mandat implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateFinMandat;
     
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Personnel personnel;
     
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private EntiteAdministratif entiteAdministratif;
     
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Responsabilite responsabilite;
 
     public Date getDateDebutMandat() {

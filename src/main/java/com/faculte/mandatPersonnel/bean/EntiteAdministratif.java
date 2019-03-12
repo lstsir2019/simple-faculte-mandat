@@ -25,7 +25,7 @@ public class EntiteAdministratif implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String entite;
+    private String referenceEntiteAdministratif;
     
     @ManyToOne  
     private SousProjet sousProjet;
@@ -38,12 +38,12 @@ public class EntiteAdministratif implements Serializable {
         this.id = id;
     }
 
-    public String getEntite() {
-        return entite;
+    public String getReferenceEntiteAdministratif() {
+        return referenceEntiteAdministratif;
     }
 
-    public void setEntite(String entite) {
-        this.entite = entite;
+    public void setReferenceEntiteAdministratif(String referenceEntiteAdministratif) {
+        this.referenceEntiteAdministratif = referenceEntiteAdministratif;
     }
 
     public SousProjet getSousProjet() {

@@ -15,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
+
 /**
  *
  * @author abdou
@@ -52,10 +54,6 @@ public class Projet implements Serializable {
         this.sousProjets = sousProjets;
     }
 
-    
-    
-    
-    
     public Long getId() {
         return id;
     }

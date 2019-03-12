@@ -5,8 +5,11 @@
  */
 package com.faculte.mandatPersonnel.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,21 +28,13 @@ public class SousProjet implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String libelleSP;
+    private String referenceSousProjet;
 
-    @OneToMany(mappedBy = "sousProjet")
+    @OneToMany(cascade = {CascadeType.ALL},mappedBy = "sousProjet")
     private List<EntiteAdministratif> entiteAdministratifs;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Projet projet;
-
-    public String getLibelleSP() {
-        return libelleSP;
-    }
-
-    public void setLibelleSP(String libelleSP) {
-        this.libelleSP = libelleSP;
-    }
 
     public Long getId() {
         return id;
@@ -49,10 +44,21 @@ public class SousProjet implements Serializable {
         this.id = id;
     }
 
+    
+    public String getReferenceSousProjet() {
+        return referenceSousProjet;
+    }
+
+    public void setReferenceSousProjet(String referenceSousProjet) {
+        this.referenceSousProjet = referenceSousProjet;
+    }
+
+    @JsonIgnore
     public List<EntiteAdministratif> getEntiteAdministratifs() {
         return entiteAdministratifs;
     }
 
+    @JsonSetter
     public void setEntiteAdministratifs(List<EntiteAdministratif> entiteAdministratifs) {
         this.entiteAdministratifs = entiteAdministratifs;
     }
@@ -65,7 +71,6 @@ public class SousProjet implements Serializable {
         this.projet = projet;
     }
 
-    
     @Override
     public int hashCode() {
         int hash = 0;

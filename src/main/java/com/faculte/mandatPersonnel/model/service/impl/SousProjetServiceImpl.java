@@ -28,13 +28,13 @@ public class SousProjetServiceImpl implements SousProjetService{
     private SousProjetDao sousProjetDao;
 
     @Override
-    public List<SousProjet> findByProjetLibelleP(String libelleP) {
-        return sousProjetDao.findByProjetLibelleP(libelleP);
+    public SousProjet findByReferenceSousProjet(String referenceSousProjet) {
+        return sousProjetDao.findByReferenceSousProjet(referenceSousProjet);
     }
 
     @Override
-    public SousProjet findByLibelleSP(String libelleSP) {
-        return sousProjetDao.findByLibelleSP(libelleSP);
+    public List<SousProjet> findByProjetLibelleP(String libelleP) {
+        return sousProjetDao.findByProjetLibelleP(libelleP);
     }
 
     @Override

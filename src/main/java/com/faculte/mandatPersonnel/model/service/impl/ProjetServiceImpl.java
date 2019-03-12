@@ -43,8 +43,8 @@ public class ProjetServiceImpl  implements ProjetService{
             return null;
         } else {
             projetDao.save(projet);
-            List<SousProjet> SousProjets = projet.getSousProjets();
-            for (SousProjet sousProjet : SousProjets) {
+            List<SousProjet> sousProjets = projet.getSousProjets();
+            for (SousProjet sousProjet : sousProjets) {
                 sousProjet.setProjet(projet);
                 sousProjetService.creerSousProjet(sousProjet);
             }

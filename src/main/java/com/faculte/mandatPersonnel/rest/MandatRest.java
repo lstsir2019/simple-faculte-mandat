@@ -19,11 +19,13 @@ import com.faculte.mandatPersonnel.rest.converter.EntiteAdministratifConverter;
 import com.faculte.mandatPersonnel.rest.converter.PersonnelConverter;
 import com.faculte.mandatPersonnel.rest.converter.ProjetConverter;
 import com.faculte.mandatPersonnel.rest.converter.ResponsabiliteConverter;
+import com.faculte.mandatPersonnel.rest.converter.SousProjetConverter;
 import com.faculte.mandatPersonnel.rest.converter.TypePersonnelConverter;
 import com.faculte.mandatPersonnel.rest.vo.EntiteAdministratifVo;
 import com.faculte.mandatPersonnel.rest.vo.PersonnelVo;
 import com.faculte.mandatPersonnel.rest.vo.ProjetVo;
 import com.faculte.mandatPersonnel.rest.vo.ResponsabiliteVo;
+import com.faculte.mandatPersonnel.rest.vo.SousProjetVo;
 import com.faculte.mandatPersonnel.rest.vo.TypePersonnelVo;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +61,7 @@ public class MandatRest {
 
     @Autowired
     private ResponsabiliteService responsabiliteService;
-    
+
     @Autowired
     private EntiteAdministratifService entiteAdministratifService;
 
@@ -78,13 +80,19 @@ public class MandatRest {
         return new PersonnelConverter().toVo(personnelService.findByCin(cin));
     }
 
-    @GetMapping("/entiteAdministratif/{entite}")
-    public EntiteAdministratifVo findByEntite(String entite) {
-        return new EntiteAdministratifConverter().toVo(entiteAdministratifService.findByEntite(entite));
+    @GetMapping("/entiteAdministratif/{referenceEntiteAdministratif}")
+    public EntiteAdministratifVo findByReferenceEntiteAdministratif(String referenceEntiteAdministratif) {
+        return new EntiteAdministratifConverter().toVo(entiteAdministratifService.findByReferenceEntiteAdministratif(referenceEntiteAdministratif));
     }
+
     @GetMapping("/libelle/{libelle}/")
     public TypePersonnelVo findByLibelle(@PathVariable("libelle") String libelle) {
         return new TypePersonnelConverter().toVo(typePersonnelService.findByLibelle(libelle));
+    }
+
+    @GetMapping("/sousProjet/{referenceSousProjet}")
+    public SousProjetVo findByReferenceSousProjet(@PathVariable("referenceSousProjet") String referenceSousProjet) {
+        return new SousProjetConverter().toVo(sousProjetService.findByReferenceSousProjet(referenceSousProjet));
     }
 
     @GetMapping("/Responsabilite/{poste}")
@@ -117,11 +125,12 @@ public class MandatRest {
 
     }
 
-//    @GetMapping("/libelleP/{libelleP}/sous-projet")
-//    public List<SousProjetVo> findByProjetLibelleP(@PathVariable("libelleP") String libelleP) {
-//        final List<SousProjet> sousProjets = sousProjetService.findByProjetLibelleP(libelleP);
-//        return new SousProjetConverter().toVo(sousProjets);
-//    }
+    @GetMapping("/libelleP/{libelleP}/sous-projet")
+    public List<SousProjetVo> findByProjetLibelleP(@PathVariable("libelleP") String libelleP) {
+        final List<SousProjet> sousProjets = sousProjetService.findByProjetLibelleP(libelleP);
+        return new SousProjetConverter().toVo(sousProjets);
+    }
+    
     public PersonnelService getPersonnelService() {
         return personnelService;
     }

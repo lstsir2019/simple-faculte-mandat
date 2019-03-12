@@ -22,18 +22,20 @@ public class EntiteAdministratifServiceImpl implements EntiteAdministratifServic
     private EntiteAdministratifDao entiteAdministratifDao;
 
     @Override
-    public EntiteAdministratif findByEntite(String entite) {
-        return entiteAdministratifDao.findByEntite(entite);
+    public EntiteAdministratif findByReferenceEntiteAdministratif(String referenceEntiteAdministratif) {
+        return entiteAdministratifDao.findByReferenceEntiteAdministratif(referenceEntiteAdministratif);
     }
+
+    
     
     @Override
-    public EntiteAdministratif createEntiteAdministratif(String entite) {
-        EntiteAdministratif ea = findByEntite(entite);
+    public EntiteAdministratif createEntiteAdministratif(String referenceEntiteAdministratif) {
+        EntiteAdministratif ea = findByReferenceEntiteAdministratif(referenceEntiteAdministratif);
          if (ea != null) {
             return null;
         } else {
             ea = new EntiteAdministratif();
-            ea.setEntite(entite);
+            ea.setReferenceEntiteAdministratif(referenceEntiteAdministratif);
             entiteAdministratifDao.save(ea);
             return ea;
         }

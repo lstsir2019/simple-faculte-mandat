@@ -5,8 +5,7 @@
  */
 package com.faculte.mandatPersonnel.rest.vo;
 
-import com.faculte.mandatPersonnel.bean.EntiteAdministratif;
-import java.util.List;
+
 
 /**
  *
@@ -15,7 +14,7 @@ import java.util.List;
 public class EntiteAdministratifVo {
 
     private Long id;
-    private String entite;
+    private String referenceEntiteAdministratif;
     private SousProjetVo sousProjetVo;
 
     public Long getId() {
@@ -26,12 +25,12 @@ public class EntiteAdministratifVo {
         this.id = id;
     }
 
-    public String getEntite() {
-        return entite;
+    public String getReferenceEntiteAdministratif() {
+        return referenceEntiteAdministratif;
     }
 
-    public void setEntite(String entite) {
-        this.entite = entite;
+    public void setReferenceEntiteAdministratif(String referenceEntiteAdministratif) {
+        this.referenceEntiteAdministratif = referenceEntiteAdministratif;
     }
 
     public SousProjetVo getSousProjetVo() {

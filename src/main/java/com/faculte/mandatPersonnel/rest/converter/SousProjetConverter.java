@@ -6,8 +6,6 @@
 package com.faculte.mandatPersonnel.rest.converter;
 
 import com.faculte.mandatPersonnel.bean.SousProjet;
-import com.faculte.mandatPersonnel.model.service.EntiteAdministratifService;
-import com.faculte.mandatPersonnel.rest.vo.EntiteAdministratifVo;
 import com.faculte.mandatPersonnel.rest.vo.SousProjetVo;
 
 
@@ -25,7 +23,7 @@ public class SousProjetConverter extends AbstractConverter<SousProjet, SousProje
         } else {
             SousProjet item = new SousProjet();
             item.setId(vo.getId());
-            item.setLibelleSP(vo.getLibelleSP());
+            item.setReferenceSousProjet(vo.getReferenceSousProjet());
             item.setEntiteAdministratifs(new EntiteAdministratifConverter().toItem(vo.getEntiteAdministratifsVo()));
             return item;
         }
@@ -39,7 +37,8 @@ public class SousProjetConverter extends AbstractConverter<SousProjet, SousProje
         else{
             SousProjetVo vo =new SousProjetVo();
             vo.setId(item.getId());
-            vo.setLibelleSP(item.getLibelleSP());
+            vo.setReferenceSousProjet(item.getReferenceSousProjet());
+            vo.setEntiteAdministratifsVo(new EntiteAdministratifConverter().toVo(item.getEntiteAdministratifs()));
             return vo;
         }
     }

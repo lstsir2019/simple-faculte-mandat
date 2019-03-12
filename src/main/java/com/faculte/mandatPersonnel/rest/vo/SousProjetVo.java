@@ -14,8 +14,7 @@ import java.util.List;
 public class SousProjetVo {
 
     private Long id;
-    private String libelleSP;
-
+    private String referenceSousProjet;
     private List<EntiteAdministratifVo> entiteAdministratifsVo;
 
     private ProjetVo projetVo;
@@ -28,14 +27,15 @@ public class SousProjetVo {
         this.id = id;
     }
 
-    public String getLibelleSP() {
-        return libelleSP;
+    public String getReferenceSousProjet() {
+        return referenceSousProjet;
     }
 
-    public void setLibelleSP(String libelleSP) {
-        this.libelleSP = libelleSP;
+    public void setReferenceSousProjet(String referenceSousProjet) {
+        this.referenceSousProjet = referenceSousProjet;
     }
 
+   
     public List<EntiteAdministratifVo> getEntiteAdministratifsVo() {
         return entiteAdministratifsVo;
     }

@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface SousProjetService {
 
-    public SousProjet findByLibelleSP(String libelleSP);
+    public SousProjet findByReferenceSousProjet(String referenceSousProjet);
     public List<SousProjet> findByProjetLibelleP(String libelleP);
     public int creerSousProjet(SousProjet sousProjet);
 }

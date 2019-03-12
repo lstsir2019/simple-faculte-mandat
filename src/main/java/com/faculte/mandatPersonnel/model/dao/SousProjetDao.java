@@ -5,7 +5,6 @@
  */
 package com.faculte.mandatPersonnel.model.dao;
 
-import com.faculte.mandatPersonnel.bean.Projet;
 import com.faculte.mandatPersonnel.bean.SousProjet;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,7 +17,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface SousProjetDao extends JpaRepository<SousProjet, Long>{
-    public SousProjet findByLibelleSP(String libelleSP);
+    public SousProjet findByReferenceSousProjet(String referenceSousProjet);
      public List<SousProjet> findByProjetLibelleP(String libelleP);
 }
 
