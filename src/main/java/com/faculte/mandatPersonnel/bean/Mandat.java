@@ -48,6 +48,7 @@ public class Mandat implements Serializable {
         this.dateDebutMandat = dateDebutMandat;
     }
 
+    
     public Date getDateFinMandat() {
         return dateFinMandat;
     }
