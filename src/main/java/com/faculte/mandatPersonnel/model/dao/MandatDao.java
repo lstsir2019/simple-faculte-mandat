@@ -6,6 +6,7 @@
 package com.faculte.mandatPersonnel.model.dao;
 
 import com.faculte.mandatPersonnel.bean.Mandat;
+import java.util.Date;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,9 +18,8 @@ import org.springframework.stereotype.Repository;
 public interface MandatDao extends JpaRepository<Mandat, Long>{
     
     
-  //  public Mandat findByMandatDateDebutMandatPersonnelCin(String cin);
-   // public Mandat findByMandatEntiteAdministratifEntite(String entite);
-   // public Mandat findByMandatResponsabilitePoste(String poste);
+    public Mandat findByDateDebutMandatAndPersonnelCin(String cin,Date dateDebutMandat);
+   // public Mandat findByMandatReferenceEntiteAdministratif(String referenceEntiteAdministratif);
    
 }
 

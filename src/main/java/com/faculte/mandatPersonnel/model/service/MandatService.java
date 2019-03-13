@@ -9,16 +9,15 @@ import com.faculte.mandatPersonnel.bean.EntiteAdministratif;
 import com.faculte.mandatPersonnel.bean.Mandat;
 import com.faculte.mandatPersonnel.bean.Personnel;
 import com.faculte.mandatPersonnel.bean.Responsabilite;
-
+import java.util.Date;
 
 /**
  *
  * @author abdou
  */
 public interface MandatService {
-    
-//    public Mandat creerMandat(Personnel personnel, EntiteAdministratif entiteAdministratif,
-//            Responsabilite responsabilite, Mandat mandat);
-//      public Mandat findByMandatDateDebutMandatPersonnelCin(String cin);
-}
 
+    public Mandat findByDateDebutMandatAndPersonnelCin(String cin,Date dateDebutMandat);
+    public Mandat creerMandat(Mandat mandat);
+
+}
