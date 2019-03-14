@@ -19,5 +19,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProjetDao extends JpaRepository<Projet ,Long> {
     public Projet findByLibelleP(String libelleP);
-    public List<Projet> findAll();
+    
 }

@@ -5,7 +5,6 @@
  */
 package com.faculte.mandatPersonnel.rest;
 
-import com.faculte.mandatPersonnel.bean.EntiteAdministratif;
 import com.faculte.mandatPersonnel.bean.Mandat;
 import com.faculte.mandatPersonnel.model.service.ProjetService;
 import com.faculte.mandatPersonnel.bean.Personnel;
@@ -49,7 +48,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController()
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping({"/mandat/mandats"})
+@RequestMapping("/mandat/mandats")
 
 public class MandatRest {
 
@@ -77,6 +76,10 @@ public class MandatRest {
     @GetMapping("/")
     public List<ProjetVo> findAll() {
         return new ProjetConverter().toVo(projetService.findAll());
+    }
+     @GetMapping("/personnel/")
+    public List<PersonnelVo> findAllPersonnel() {
+        return new PersonnelConverter().toVo(personnelService.findAll());
     }
 
     @GetMapping("/libelleProjet/{libelleP}")
