@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2019 at 06:14 PM
+-- Generation Time: Mar 19, 2019 at 10:46 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -35,13 +35,6 @@ CREATE TABLE IF NOT EXISTS `entite_administratif` (
   KEY `FKo30r6x9q7ymi4ig49lb15b4ba` (`sous_projet`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `entite_administratif`
---
-
-INSERT INTO `entite_administratif` (`id`, `reference_entite_administratif`, `sous_projet`) VALUES
-(1, 'FFF', 2);
-
 -- --------------------------------------------------------
 
 --
@@ -57,13 +50,13 @@ CREATE TABLE IF NOT EXISTS `hibernate_sequence` (
 --
 
 INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-(9),
-(9),
-(9),
-(9),
-(9),
-(9),
-(9);
+(5),
+(5),
+(5),
+(5),
+(5),
+(5),
+(5);
 
 -- --------------------------------------------------------
 
@@ -83,13 +76,6 @@ CREATE TABLE IF NOT EXISTS `mandat` (
   KEY `FKp3nykj5su6og7njs0ws4q29rh` (`personnel`),
   KEY `FKf746xabyw5q5nuvwuuai30k4j` (`responsabilite`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mandat`
---
-
-INSERT INTO `mandat` (`id`, `date_debut_mandat`, `date_fin_mandat`, `entite_administratif`, `personnel`, `responsabilite`) VALUES
-(1, '2010-10-10', '2019-03-13', 1, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -112,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `personnel` (
   `lieu_affectation` varchar(255) DEFAULT NULL,
   `lieu_naissance` varchar(255) DEFAULT NULL,
   `nom` varchar(255) DEFAULT NULL,
-  `nombre_enfants` decimal(19,2) DEFAULT NULL,
+  `nombre_enfants` int(11) NOT NULL,
   `numero_location` varchar(255) DEFAULT NULL,
   `prenom` varchar(255) DEFAULT NULL,
   `type_personnel` bigint(20) DEFAULT NULL,
@@ -125,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `personnel` (
 --
 
 INSERT INTO `personnel` (`id`, `cin`, `code_echelle`, `code_echelon`, `date_acces_fonction_publique`, `date_activation`, `date_debut_type_personnel`, `date_exercice_echelle`, `date_naissance`, `etat_social`, `grade`, `lieu_affectation`, `lieu_naissance`, `nom`, `nombre_enfants`, `numero_location`, `prenom`, `type_personnel`) VALUES
-(6, 'EE3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', NULL, NULL, 5);
+(1, 'EE1', 'CC12', 'CB66', '2016-06-06', '2016-09-03', '2018-02-12', '2019-03-20', '1990-03-16', 'EE', 'GG', 'marrakech', 'marrakech', 'Ghouat', 2, 'GH12', 'Abdou', 1);
 
 -- --------------------------------------------------------
 
@@ -144,8 +130,7 @@ CREATE TABLE IF NOT EXISTS `projet` (
 --
 
 INSERT INTO `projet` (`id`, `libellep`) VALUES
-(1, 'AAA'),
-(7, 'LL');
+(1, 'PPP');
 
 -- --------------------------------------------------------
 
@@ -158,13 +143,6 @@ CREATE TABLE IF NOT EXISTS `responsabilite` (
   `poste` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `responsabilite`
---
-
-INSERT INTO `responsabilite` (`id`, `poste`) VALUES
-(1, 'XXX');
 
 -- --------------------------------------------------------
 
@@ -185,10 +163,9 @@ CREATE TABLE IF NOT EXISTS `sous_projet` (
 --
 
 INSERT INTO `sous_projet` (`id`, `reference_sous_projet`, `projet`) VALUES
-(2, 'BBB', 1),
-(3, 'CCC', 1),
-(4, 'DDD', 1),
-(8, 'SS', 7);
+(2, 'SS', 1),
+(3, 'MM', 1),
+(4, 'KK', 1);
 
 -- --------------------------------------------------------
 
@@ -207,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `type_personnel` (
 --
 
 INSERT INTO `type_personnel` (`id`, `libelle`) VALUES
-(5, 'doyen');
+(1, 'doyen');
 SET FOREIGN_KEY_CHECKS=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

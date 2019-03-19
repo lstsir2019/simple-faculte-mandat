@@ -8,7 +8,6 @@ package com.faculte.mandatPersonnel.bean;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -37,7 +36,7 @@ public class Personnel implements Serializable {
     private String cin;
     private String numeroLocation;
     private String lieuNaissance;
-    private BigDecimal nombreEnfants;
+    private int nombreEnfants;
     private String lieuAffectation;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateExerciceEchelle;
@@ -125,14 +124,15 @@ public class Personnel implements Serializable {
         this.lieuNaissance = lieuNaissance;
     }
 
-    public BigDecimal getNombreEnfants() {
+    public int getNombreEnfants() {
         return nombreEnfants;
     }
 
-    public void setNombreEnfants(BigDecimal nombreEnfants) {
+    public void setNombreEnfants(int nombreEnfants) {
         this.nombreEnfants = nombreEnfants;
     }
 
+  
    
 
     public String getLieuAffectation() {

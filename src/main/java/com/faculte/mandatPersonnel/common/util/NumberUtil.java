@@ -29,12 +29,18 @@ public class NumberUtil {
     }
     } 
    
-       public static String toInteger(int value){
-        if(value==0){
-            return CHAINE_VIDE;
-        }else{
+      public static int toInt(String value) {
+        if (value == null || value.isEmpty()) {
+            return 0;
+        } else {
+            
+            return new Integer(value);
+        }
+        
+    }
+          public static String toString(int value) {
+
             return String.valueOf(value);
         }
-    }
     
 }

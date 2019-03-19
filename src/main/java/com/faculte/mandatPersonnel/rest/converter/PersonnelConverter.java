@@ -38,7 +38,7 @@ public class PersonnelConverter extends AbstractConverter<Personnel ,PersonnelVo
             item.setLieuAffectation(vo.getLieuAffectation());
             item.setLieuNaissance(vo.getLieuNaissance());
             item.setNom(vo.getNom());
-            item.setNombreEnfants(NumberUtil.toBigDecimal(vo.getNombreEnfants()));
+            item.setNombreEnfants(NumberUtil.toInt(vo.getNombreEnfants()));
             item.setNumeroLocation(vo.getNumeroLocation());
             item.setPrenom(vo.getPrenom());
             item.setTypePersonnel(new TypePersonnelConverter().toItem(vo.getTypePersonnelVo()));

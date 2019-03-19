@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2019 at 06:14 PM
+-- Generation Time: Mar 19, 2019 at 10:43 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `personnel` (
   `lieu_affectation` varchar(255) DEFAULT NULL,
   `lieu_naissance` varchar(255) DEFAULT NULL,
   `nom` varchar(255) DEFAULT NULL,
-  `nombre_enfants` decimal(19,2) DEFAULT NULL,
+  `nombre_enfants` int(11) NOT NULL,
   `numero_location` varchar(255) DEFAULT NULL,
   `prenom` varchar(255) DEFAULT NULL,
   `type_personnel` bigint(20) DEFAULT NULL,
