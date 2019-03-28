@@ -36,6 +36,7 @@ public class ProjetServiceImpl  implements ProjetService{
         return projetDao.findByLibelleP(libelleP);
     }
     
+    
    @Override
     public Projet creerProjet(Projet projet) {
         Projet p = findByLibelleP(projet.getLibelleP());

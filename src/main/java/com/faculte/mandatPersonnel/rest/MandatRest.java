@@ -5,6 +5,7 @@
  */
 package com.faculte.mandatPersonnel.rest;
 
+import com.faculte.mandatPersonnel.bean.EntiteAdministratif;
 import com.faculte.mandatPersonnel.bean.Mandat;
 import com.faculte.mandatPersonnel.model.service.ProjetService;
 import com.faculte.mandatPersonnel.bean.Personnel;
@@ -83,7 +84,7 @@ public class MandatRest {
     }
 
     @GetMapping("/libelleProjet/{libelleP}")
-    public ProjetVo findByLibelleP(String libelleP) {
+    public ProjetVo findByLibelleP(@PathVariable("libelleP") String libelleP) {
         return new ProjetConverter().toVo(projetService.findByLibelleP(libelleP));
     }
 
@@ -93,7 +94,7 @@ public class MandatRest {
     }
 
     @GetMapping("/entiteAdministratif/{referenceEntiteAdministratif}")
-    public EntiteAdministratifVo findByReferenceEntiteAdministratif(String referenceEntiteAdministratif) {
+    public EntiteAdministratifVo findByReferenceEntiteAdministratif(@PathVariable("referenceEntiteAdministratif")String referenceEntiteAdministratif) {
         return new EntiteAdministratifConverter().toVo(entiteAdministratifService.findByReferenceEntiteAdministratif(referenceEntiteAdministratif));
     }
 
@@ -147,13 +148,20 @@ public class MandatRest {
         return new ResponsabiliteConverter().toVo(responsabilite);
     }
 
+     @PostMapping("/EntiteAdministartif/")
+    public EntiteAdministratifVo createEntiteAdministratif(@RequestBody EntiteAdministratifVo entiteAdministratifVo){
+        EntiteAdministratifConverter entiteAdministratifConverter = new EntiteAdministratifConverter();
+        EntiteAdministratif ea =entiteAdministratifConverter.toItem(entiteAdministratifVo);
+        EntiteAdministratif entiteAdministratif= entiteAdministratifService.createEntiteAdministratif(ea);
+        return new EntiteAdministratifConverter().toVo(entiteAdministratif);
+    }
+    
     @PostMapping("/mandat/")
     public MandatVo creerMandat(@RequestBody MandatVo mandatVo){
         MandatConverter mandatConverter = new MandatConverter();
         Mandat m=mandatConverter.toItem(mandatVo);
         Mandat mandat =mandatService.creerMandat(m);
         return new MandatConverter().toVo(mandat);
-        
     }
 
     public PersonnelService getPersonnelService() {

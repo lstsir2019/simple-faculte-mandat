@@ -12,6 +12,6 @@ import com.faculte.mandatPersonnel.bean.EntiteAdministratif;
  * @author abdou
  */
 public interface EntiteAdministratifService {
-    public EntiteAdministratif createEntiteAdministratif(String entite);
+    public EntiteAdministratif createEntiteAdministratif(EntiteAdministratif entiteAdministratif);
     public EntiteAdministratif findByReferenceEntiteAdministratif(String referenceEntiteAdministratif);
 }

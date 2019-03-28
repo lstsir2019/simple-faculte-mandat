@@ -50,10 +50,10 @@ public class MandatServiceImpl implements MandatService {
                 return null;
             } else {
                 mandatDao.save(mandat);
-                entiteAdministratifService.createEntiteAdministratif(mandat.getEntiteAdministratif().getReferenceEntiteAdministratif());
+                entiteAdministratifService.createEntiteAdministratif(mandat.getEntiteAdministratif());
                 responsabiliteService.creerResopnsabilite(mandat.getResponsabilite());
                 personnelService.creerPersonnel(mandat.getPersonnel());
-                System.out.println("mandat");
+                //System.out.println("mandat");
                 return mandat;
                 
             }
