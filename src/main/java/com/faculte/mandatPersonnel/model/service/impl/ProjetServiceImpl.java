@@ -14,30 +14,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-
-
-
 /**
  *
  * @author abdou
  */
 @Service
-public class ProjetServiceImpl  implements ProjetService{
+public class ProjetServiceImpl implements ProjetService {
 
     @Autowired
-    private ProjetDao projetDao ;
-    
+    private ProjetDao projetDao;
+
     @Autowired
     private SousProjetService sousProjetService;
+    
+    @Autowired
+    private ProjetService projetService;
 
     @Override
     public Projet findByLibelleP(String libelleP) {
         return projetDao.findByLibelleP(libelleP);
     }
-    
-    
-   @Override
+
+    @Override
+    public List<Projet> findAll() {
+        return projetDao.findAll();
+    }
+
+    @Override
     public Projet creerProjet(Projet projet) {
         Projet p = findByLibelleP(projet.getLibelleP());
         if (p != null) {
@@ -53,13 +56,21 @@ public class ProjetServiceImpl  implements ProjetService{
         }
     }
 
-@Override
-    public List<Projet> findAll() {
-        return projetDao.findAll();
+    @Override
+    public int deleteByLibelleP(String libelleP) {
+        Projet projet = projetService.findByLibelleP(libelleP);
+        if (projet == null) {
+            return -1;
+        } else {
+            List<SousProjet> sousProjets = sousProjetService.findByProjetLibelleP(libelleP);
+            for (SousProjet sousProjet : sousProjets) {
+                sousProjetService.deleteByReferenceSousProjet(sousProjet.getReferenceSousProjet());
+            }
+            projetDao.delete(projet);
+            return 1;
+        }
     }
-    
 
-    
     public ProjetDao getProjetDao() {
         return projetDao;
     }
@@ -76,12 +87,13 @@ public class ProjetServiceImpl  implements ProjetService{
         this.sousProjetService = sousProjetService;
     }
 
-    
-    
-    
-    
-    
-    
-    
+    public ProjetService getProjetService() {
+        return projetService;
+    }
+
+    public void setProjetService(ProjetService projetService) {
+        this.projetService = projetService;
+    }
+
     
 }

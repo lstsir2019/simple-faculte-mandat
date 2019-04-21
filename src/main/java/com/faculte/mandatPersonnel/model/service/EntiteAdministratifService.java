@@ -6,6 +6,7 @@
 package com.faculte.mandatPersonnel.model.service;
 
 import com.faculte.mandatPersonnel.bean.EntiteAdministratif;
+import java.util.List;
 
 /**
  *
@@ -14,4 +15,8 @@ import com.faculte.mandatPersonnel.bean.EntiteAdministratif;
 public interface EntiteAdministratifService {
     public EntiteAdministratif createEntiteAdministratif(EntiteAdministratif entiteAdministratif);
     public EntiteAdministratif findByReferenceEntiteAdministratif(String referenceEntiteAdministratif);
+     public List<EntiteAdministratif> findAll();
+     //public void deleteByReferenceEntiteAdministratif(String referenceEntiteAdministratif);
+     public int deleteEntite(String referenceEntiteAdministratif);
+    public int updateEntite(EntiteAdministratif entite);
 }

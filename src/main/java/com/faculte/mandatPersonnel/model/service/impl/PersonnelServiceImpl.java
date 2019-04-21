@@ -24,7 +24,8 @@ public class PersonnelServiceImpl implements PersonnelService {
     @Autowired
     private PersonnelDao personnelDao;
 
-    
+    @Autowired
+    private PersonnelService personnelService;
 
     @Autowired
     private TypePersonnelService typePersonnelService;
@@ -48,6 +49,7 @@ public class PersonnelServiceImpl implements PersonnelService {
             if (tp != null) {
                 personnel.setTypePersonnel(tp);
                 personnelDao.save(personnel);
+                
                 return personnel;
             }else{
                 return null;
@@ -56,6 +58,16 @@ public class PersonnelServiceImpl implements PersonnelService {
         }
     }
 
+     @Override
+    public int deleteByCin(String cin) {
+        Personnel p = personnelService.findByCin(cin);
+          if (p == null) {
+            return -1;
+        } else { 
+            personnelDao.delete(p);
+            return 1;
+        }
+    }
     public PersonnelDao getPersonnelDao() {
         return personnelDao;
     }
@@ -71,5 +83,17 @@ public class PersonnelServiceImpl implements PersonnelService {
     public void setTypePersonnelService(TypePersonnelService typePersonnelService) {
         this.typePersonnelService = typePersonnelService;
     }
+
+    public PersonnelService getPersonnelService() {
+        return personnelService;
+    }
+
+    public void setPersonnelService(PersonnelService personnelService) {
+        this.personnelService = personnelService;
+    }
+    
+    
+
+   
 
 }

@@ -26,6 +26,13 @@ public class SousProjetServiceImpl implements SousProjetService{
     
     @Autowired
     private SousProjetDao sousProjetDao;
+    @Autowired
+    private SousProjetService sousProjetService;
+
+    @Override
+    public List<SousProjet> findAll() {
+        return sousProjetDao.findAll();
+    }
 
     @Override
     public SousProjet findByReferenceSousProjet(String referenceSousProjet) {
@@ -49,6 +56,19 @@ public class SousProjetServiceImpl implements SousProjetService{
 
     public void setSousProjetDao(SousProjetDao sousProjetDao) {
         this.sousProjetDao = sousProjetDao;
+    }
+
+    
+
+    @Override
+    public int deleteByReferenceSousProjet(String referenceSousProjet) {
+           SousProjet s = sousProjetService.findByReferenceSousProjet(referenceSousProjet);
+          if (s == null) {
+            return -1;
+        } else { 
+            sousProjetDao.delete(s);
+            return 1;
+        }
     }
 
     

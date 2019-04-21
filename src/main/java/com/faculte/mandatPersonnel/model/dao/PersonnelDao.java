@@ -15,8 +15,8 @@ import org.springframework.stereotype.Repository;
  * @author abdou
  */
 @Repository
-public interface PersonnelDao extends JpaRepository<Personnel, Long>{
+public interface PersonnelDao extends JpaRepository<Personnel, Long> {
+
     public Personnel findByCin(String cin);
-    
-   
+
 }

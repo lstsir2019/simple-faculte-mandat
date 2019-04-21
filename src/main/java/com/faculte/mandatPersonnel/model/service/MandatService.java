@@ -10,6 +10,7 @@ import com.faculte.mandatPersonnel.bean.Mandat;
 import com.faculte.mandatPersonnel.bean.Personnel;
 import com.faculte.mandatPersonnel.bean.Responsabilite;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -17,7 +18,8 @@ import java.util.Date;
  */
 public interface MandatService {
 
-    public Mandat findByDateDebutMandatAndPersonnelCin(String cin,Date dateDebutMandat);
+    public Mandat findByPersonnelCin(String cin);
     public Mandat creerMandat(Mandat mandat);
+    public List<Mandat> findAll();
 
 }

@@ -14,7 +14,7 @@ import com.faculte.mandatPersonnel.model.service.EntiteAdministratifService;
 import com.faculte.mandatPersonnel.model.service.MandatService;
 import com.faculte.mandatPersonnel.model.service.PersonnelService;
 import com.faculte.mandatPersonnel.model.service.ResponsabiliteService;
-import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,36 +29,33 @@ public class MandatServiceImpl implements MandatService {
     private MandatDao mandatDao;
 
     @Autowired
+    private PersonnelService personnelService;
+    @Autowired
     private EntiteAdministratifService entiteAdministratifService;
-    
     @Autowired
     private ResponsabiliteService responsabiliteService;
-    
-    @Autowired
-    private PersonnelService personnelService;
-    
+
     @Override
-    public Mandat findByDateDebutMandatAndPersonnelCin(String cin,Date dateDebutMandat) {
-        return mandatDao.findByDateDebutMandatAndPersonnelCin(cin,dateDebutMandat);
+    public List<Mandat> findAll() {
+        return mandatDao.findAll();
+    }
+
+    @Override
+    public Mandat findByPersonnelCin(String cin) {
+        return mandatDao.findByPersonnelCin(cin);
     }
 
     @Override
     public Mandat creerMandat(Mandat mandat) {
-        if (mandat != null) {
-            Mandat m = findByDateDebutMandatAndPersonnelCin(mandat.getPersonnel().getCin(),mandat.getDateDebutMandat());
-            if (m != null ) {
-                return null;
-            } else {
-                mandatDao.save(mandat);
-                entiteAdministratifService.createEntiteAdministratif(mandat.getEntiteAdministratif());
-                responsabiliteService.creerResopnsabilite(mandat.getResponsabilite());
-                personnelService.creerPersonnel(mandat.getPersonnel());
-                //System.out.println("mandat");
-                return mandat;
-                
-            }
-        }
-        return null;
+        Personnel personnel = personnelService.findByCin(mandat.getPersonnel().getCin());
+        EntiteAdministratif entite = entiteAdministratifService.findByReferenceEntiteAdministratif(mandat.getEntiteAdministratif().getReferenceEntiteAdministratif());
+        Responsabilite responsabilite = responsabiliteService.findByPoste(mandat.getResponsabilite().getPoste());
+        mandat.setPersonnel(personnel);
+        mandat.setEntiteAdministratif(entite);
+        mandat.setResponsabilite(responsabilite);
+        mandatDao.save(mandat);
+        return mandat;
+
     }
 
     public MandatDao getMandatDao() {
@@ -67,6 +64,14 @@ public class MandatServiceImpl implements MandatService {
 
     public void setMandatDao(MandatDao mandatDao) {
         this.mandatDao = mandatDao;
+    }
+
+    public PersonnelService getPersonnelService() {
+        return personnelService;
+    }
+
+    public void setPersonnelService(PersonnelService personnelService) {
+        this.personnelService = personnelService;
     }
 
     public EntiteAdministratifService getEntiteAdministratifService() {
@@ -85,13 +90,9 @@ public class MandatServiceImpl implements MandatService {
         this.responsabiliteService = responsabiliteService;
     }
 
-    public PersonnelService getPersonnelService() {
-        return personnelService;
-    }
-
-    public void setPersonnelService(PersonnelService personnelService) {
-        this.personnelService = personnelService;
-    }
-
+    
+    
+    
+    
     
 }

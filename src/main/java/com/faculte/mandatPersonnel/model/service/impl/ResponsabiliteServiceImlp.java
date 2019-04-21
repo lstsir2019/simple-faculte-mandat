@@ -8,6 +8,7 @@ package com.faculte.mandatPersonnel.model.service.impl;
 import com.faculte.mandatPersonnel.bean.Responsabilite;
 import com.faculte.mandatPersonnel.model.dao.ResponsabiliteDao;
 import com.faculte.mandatPersonnel.model.service.ResponsabiliteService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,14 @@ public class ResponsabiliteServiceImlp implements ResponsabiliteService {
 
     @Autowired
     private ResponsabiliteDao responsabiliteDao;
+    
+    @Autowired
+    private ResponsabiliteService responsabiliteService;
+
+    @Override
+    public List<Responsabilite> findAll() {
+        return responsabiliteDao.findAll();
+    }
 
     @Override
     public Responsabilite findByPoste(String poste) {
@@ -46,6 +55,17 @@ public class ResponsabiliteServiceImlp implements ResponsabiliteService {
 
     public void setResponsabiliteDao(ResponsabiliteDao responsabiliteDao) {
         this.responsabiliteDao = responsabiliteDao;
+    }
+
+    @Override
+    public int deleteByPoste(String poste) {
+         Responsabilite r = responsabiliteService.findByPoste(poste);
+          if (r == null) {
+            return -1;
+        } else { 
+            responsabiliteDao.delete(r);
+            return 1;
+        }
     }
 
 }

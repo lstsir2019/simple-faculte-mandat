@@ -18,7 +18,7 @@ import org.springframework.stereotype.Repository;
 public interface MandatDao extends JpaRepository<Mandat, Long>{
     
     
-    public Mandat findByDateDebutMandatAndPersonnelCin(String cin,Date dateDebutMandat);
+    public Mandat findByPersonnelCin(String cin);
    // public Mandat findByMandatReferenceEntiteAdministratif(String referenceEntiteAdministratif);
    
 }

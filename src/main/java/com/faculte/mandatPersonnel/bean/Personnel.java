@@ -55,11 +55,6 @@ public class Personnel implements Serializable {
     public Personnel() {
     }
     
-    
-   
-
-  
-    
     public Long getId() {
         return id;
     }

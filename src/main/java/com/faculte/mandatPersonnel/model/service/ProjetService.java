@@ -13,8 +13,12 @@ import java.util.List;
  * @author abdou
  */
 public interface ProjetService {
+
     public Projet findByLibelleP(String libelleP);
+
     public Projet creerProjet(Projet projet);
+
     public List<Projet> findAll();
-    
+
+    public int deleteByLibelleP(String libelleP);
 }

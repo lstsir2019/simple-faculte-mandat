@@ -6,6 +6,7 @@
 package com.faculte.mandatPersonnel.model.service;
 
 import com.faculte.mandatPersonnel.bean.Responsabilite;
+import java.util.List;
 
 /**
  *
@@ -14,4 +15,6 @@ import com.faculte.mandatPersonnel.bean.Responsabilite;
 public interface ResponsabiliteService {
     public Responsabilite creerResopnsabilite(Responsabilite responsabilite);
     public Responsabilite findByPoste(String poste);
+    public List<Responsabilite> findAll();
+    public int deleteByPoste(String poste);
 }
