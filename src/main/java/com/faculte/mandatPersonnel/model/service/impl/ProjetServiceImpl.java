@@ -8,6 +8,7 @@ package com.faculte.mandatPersonnel.model.service.impl;
 import com.faculte.mandatPersonnel.bean.Projet;
 import com.faculte.mandatPersonnel.bean.SousProjet;
 import com.faculte.mandatPersonnel.model.dao.ProjetDao;
+import com.faculte.mandatPersonnel.model.service.EntiteAdministratifService;
 import com.faculte.mandatPersonnel.model.service.ProjetService;
 import com.faculte.mandatPersonnel.model.service.SousProjetService;
 import java.util.List;
@@ -29,7 +30,7 @@ public class ProjetServiceImpl implements ProjetService {
     
     @Autowired
     private ProjetService projetService;
-
+    
     @Override
     public Projet findByLibelleP(String libelleP) {
         return projetDao.findByLibelleP(libelleP);

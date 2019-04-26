@@ -74,9 +74,7 @@ public class MandatRest {
     @Autowired
     private MandatService mandatService;
 
-   
-         //------------Debut---------------------Entite Administratif----------------------------------------------//
-    
+    //------------Debut---------------------Entite Administratif----------------------------------------------//
     @GetMapping("/entiteAdministratif/")
     public List<EntiteAdministratifVo> findAllEntite() {
         return new EntiteAdministratifConverter().toVo(entiteAdministratifService.findAll());
@@ -95,7 +93,7 @@ public class MandatRest {
         return new EntiteAdministratifConverter().toVo(entiteAdministratif);
     }
 
-    @DeleteMapping("/delete/{referenceEntiteAdministratif}")
+    @DeleteMapping("/deleteEa/{referenceEntiteAdministratif}")
     public int deleteEntite(@PathVariable String referenceEntiteAdministratif) {
         return entiteAdministratifService.deleteEntite(referenceEntiteAdministratif);
     }
@@ -108,70 +106,67 @@ public class MandatRest {
 //    }
 
     //----------Fin-----------------------Entite Administratif----------------------------------------------//
-    
-    
     //------------Debut---------------------Projet----------------------------------------------//
-    
     @GetMapping("/")
     public List<ProjetVo> findAll() {
         return new ProjetConverter().toVo(projetService.findAll());
     }
-    
+
     @GetMapping("/libelleProjet/{libelleP}")
     public ProjetVo findByLibelleP(@PathVariable("libelleP") String libelleP) {
         return new ProjetConverter().toVo(projetService.findByLibelleP(libelleP));
     }
 
-     @PostMapping("/projet/")
+    @PostMapping("/projet/")
     public ProjetVo creerProjet(@RequestBody ProjetVo projetVo) {
         ProjetConverter projetConverter = new ProjetConverter();
         Projet myProjet = projetConverter.toItem(projetVo);
         Projet projet = projetService.creerProjet(myProjet);
         return new ProjetConverter().toVo(projet);
     }
-    
+
+    @DeleteMapping("/deleteP/{libelleP}")
+    public int deleteProjet(@PathVariable String libelleP) {
+        return projetService.deleteByLibelleP(libelleP);
+    }
+
     
     
     //------------Fin---------------------Projet----------------------------------------------//
     
-    
-    
-    
-    
-    
+
+
     //------------Debut---------------------Sous Projet----------------------------------------------//
+    
     
     @GetMapping("/sousProjet/")
     public List<SousProjetVo> findAllSousProjet() {
         return new SousProjetConverter().toVo(sousProjetService.findAll());
     }
-    
-    
+
     @GetMapping("/sousProjet/{referenceSousProjet}")
     public SousProjetVo findByReferenceSousProjet(@PathVariable("referenceSousProjet") String referenceSousProjet) {
         return new SousProjetConverter().toVo(sousProjetService.findByReferenceSousProjet(referenceSousProjet));
     }
-    
-     @GetMapping("/libelleP/{libelleP}/sous-projet")
+
+    @GetMapping("/libelleP/{libelleP}/sous-projet")
     public List<SousProjetVo> findByProjetLibelleP(@PathVariable("libelleP") String libelleP) {
         final List<SousProjet> sousProjets = sousProjetService.findByProjetLibelleP(libelleP);
         return new SousProjetConverter().toVo(sousProjets);
     }
 
-    
+    @DeleteMapping("/deleteSp/{referenceSousProjet}")
+    public int deleteSousProjet(@PathVariable String referenceSousProjet) {
+        return sousProjetService.deleteByReferenceSousProjet(referenceSousProjet);
+    }
     //------------Fin---------------------Sous Projet----------------------------------------------//
-    
-    
-    
     //------------Debut---------------------Mandat----------------------------------------------//
-    
     @GetMapping("/mandat/")
     public List<MandatVo> findAllMandat() {
         return new MandatConverter().toVo(mandatService.findAll());
     }
-    
-    
-     @PostMapping("/mandate/")
+
+    @PostMapping("/mandate/")
     public MandatVo creerMandat(@RequestBody MandatVo mandatVo) {
         MandatConverter mandatConverter = new MandatConverter();
         Mandat m = mandatConverter.toItem(mandatVo);
@@ -179,49 +174,48 @@ public class MandatRest {
         return new MandatConverter().toVo(mandat);
     }
     
-    
-    //------------Fin---------------------Mandat----------------------------------------------//
 
-    
-    
-    //------------Debut---------------------Responsabilite----------------------------------------------//
-    
+    //------------Fin---------------------Mandat----------------------------------------------//
    
     
+   //------------Debut---------------------Responsabilite----------------------------------------------//
     @GetMapping("/responsabilite/")
     public List<ResponsabiliteVo> findAllResponsabilite() {
         return new ResponsabiliteConverter().toVo(responsabiliteService.findAll());
     }
-    
-    
+
     @GetMapping("/Responsabilite/{poste}")
     public ResponsabiliteVo findByPoste(@PathVariable("poste") String poste) {
         return new ResponsabiliteConverter().toVo(responsabiliteService.findByPoste(poste));
     }
 
-    
-    
-     @PostMapping("/Responsabilite/")
+    @PostMapping("/Responsabilite/")
     public ResponsabiliteVo creerResponsabilite(@RequestBody ResponsabiliteVo responsabiliteVo) {
         ResponsabiliteConverter responsabiliteConverter = new ResponsabiliteConverter();
         Responsabilite resp = responsabiliteConverter.toItem(responsabiliteVo);
         Responsabilite responsabilite = responsabiliteService.creerResopnsabilite(resp);
         return new ResponsabiliteConverter().toVo(responsabilite);
     }
-
     
+    @DeleteMapping("/deletePoste/{poste}")
+    public int deleteByPoste(@PathVariable String poste) {
+        return responsabiliteService.deleteByPoste(poste);
+    }
+
     //------------Fin---------------------Responsabilite----------------------------------------------//
     
-    
 
-    
-
-   
-    //------------Debut---------------------Personnel et type Personnel----------------------------------------------//
+   //------------Debut---------------------Personnel et type Personnel----------------------------------------------//
     @GetMapping("/personnel/")
     public List<PersonnelVo> findAllPersonnel() {
         return new PersonnelConverter().toVo(personnelService.findAll());
     }
+    
+    @GetMapping("/typePersonnel/")
+    public List<TypePersonnelVo> findAllTypePersonnel() {
+        return new TypePersonnelConverter().toVo(typePersonnelService.findAll());
+    }
+
 
     @GetMapping("/cin/{cin}")
     public PersonnelVo findByCin(@PathVariable("cin") String cin) {
@@ -236,37 +230,19 @@ public class MandatRest {
         return new PersonnelConverter().toVo(personnel);
     }
 
-    @DeleteMapping("/personnel/{cin}")
-    public int deleteByCin(@PathVariable String cin) {
-        return personnelService.deleteByCin(cin);
-    }
-
-    
     @GetMapping("/libelle/{libelle}/")
     public TypePersonnelVo findByLibelle(@PathVariable("libelle") String libelle) {
         return new TypePersonnelConverter().toVo(typePersonnelService.findByLibelle(libelle));
     }
+    
+     @DeleteMapping("/deletePersonnel/{cin}")
+    public int deleteByCin(@PathVariable String cin) {
+        return personnelService.deleteByCin(cin);
+    }
     //----------Fin-------------------Personnel et type Personnel----------------------------------------------//
-   
 
-   
-   
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     //-------------------------------------------------GETTER/SETTER---------------------------------------------------//
-    
-    
     public PersonnelService getPersonnelService() {
         return personnelService;
     }

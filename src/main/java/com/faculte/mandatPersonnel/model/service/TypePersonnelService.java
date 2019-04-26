@@ -8,6 +8,7 @@ package com.faculte.mandatPersonnel.model.service;
 
 import com.faculte.mandatPersonnel.bean.Personnel;
 import com.faculte.mandatPersonnel.bean.TypePersonnel;
+import java.util.List;
 
 /**
  *
@@ -17,5 +18,6 @@ public interface TypePersonnelService {
     public TypePersonnel findByPersonnel(Personnel personnel); 
     public TypePersonnel createTypePersonnel(String libelle);
     public TypePersonnel findByLibelle(String libelle);
+    public List<TypePersonnel> findAll();
 }
 

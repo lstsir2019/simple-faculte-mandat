@@ -17,7 +17,7 @@ import java.util.Date;
 public class DateUtil {
 
     public static String formateDate(Date date) {
-        return formateDate("yyyy-MM-dd hh:mm:ss.SSS", date);
+        return formateDate("MM-dd-yyyy", date);
     }
 
     public static String formateDate(String pattern, Date date) {
@@ -32,7 +32,7 @@ public class DateUtil {
     public static Date parse(String date) {
         if (date != null) {
             try {
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy");
                 return simpleDateFormat.parse(date);
             } catch (ParseException ex) {
                 return null;

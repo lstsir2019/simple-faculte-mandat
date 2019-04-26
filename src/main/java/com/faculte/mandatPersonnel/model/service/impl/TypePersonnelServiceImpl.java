@@ -9,6 +9,7 @@ import com.faculte.mandatPersonnel.bean.Personnel;
 import com.faculte.mandatPersonnel.bean.TypePersonnel;
 import com.faculte.mandatPersonnel.model.dao.TypePersonnelDao;
 import com.faculte.mandatPersonnel.model.service.TypePersonnelService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,11 @@ public class TypePersonnelServiceImpl implements TypePersonnelService{
 
     @Autowired
      private TypePersonnelDao typePersonnelDao;
+ 
+     @Override
+    public List<TypePersonnel> findAll() {
+        return typePersonnelDao.findAll();
+    }
     
     @Override
     public TypePersonnel findByPersonnel(Personnel personnel) {
@@ -48,6 +54,8 @@ public class TypePersonnelServiceImpl implements TypePersonnelService{
     }
         
     }
+
+   
 
   
 

@@ -46,6 +46,7 @@ public class EntiteAdministratifServiceImpl implements EntiteAdministratifServic
     public EntiteAdministratif createEntiteAdministratif(EntiteAdministratif entiteAdministratif) {
         EntiteAdministratif ea = findByReferenceEntiteAdministratif(entiteAdministratif.getReferenceEntiteAdministratif());
         if (ea != null) {
+            System.out.println("ana f 1");
             return null;
         } else {
             ea = new EntiteAdministratif();
@@ -57,6 +58,8 @@ public class EntiteAdministratifServiceImpl implements EntiteAdministratifServic
             entiteAdministratifDao.save(ea);
             return ea; 
             }else{
+               System.out.println("ana f 2");
+
                return null;
             }
             
