@@ -41,10 +41,10 @@ public class PersonnelServiceImpl implements PersonnelService {
     }
 
     @Override
-    public Personnel creerPersonnel(Personnel personnel) {
+    public int creerPersonnel(Personnel personnel) {
         Personnel p = findByCin(personnel.getCin());
         if (p != null) {
-            return null;
+            return -1;
         } else {
             // TypePersonnel tp =typePersonnelService.createTypePersonnel(personnel.getTypePersonnel().getLibelle());
             TypePersonnel tp = typePersonnelService.findByLibelle(personnel.getTypePersonnel().getLibelle());
@@ -53,9 +53,9 @@ public class PersonnelServiceImpl implements PersonnelService {
                 System.out.println(tp);
                 personnelDao.save(personnel);
 
-                return personnel;
+                return 1;
             } else {
-                return null;
+                return -2;
             }
 
         }
@@ -69,6 +69,35 @@ public class PersonnelServiceImpl implements PersonnelService {
         } else {
             personnelDao.delete(p);
             return 1;
+        }
+    }
+
+    @Override
+    public Personnel updatePersonnel(Personnel personnel) {
+        Personnel p = findByCin(personnel.getCin());
+        if (p == null) {
+            return null;
+        } else {
+            p.setCin(personnel.getCin());
+            p.setNom(personnel.getNom());
+            p.setCodeEchelle(personnel.getCodeEchelle());
+            p.setCodeEchelon(personnel.getCodeEchelon());
+            p.setDateAccesFonctionPublique(personnel.getDateAccesFonctionPublique());
+            p.setDateActivation(personnel.getDateActivation());
+            p.setDateDebutTypePersonnel(personnel.getDateDebutTypePersonnel());
+            p.setDateExerciceEchelle(personnel.getDateExerciceEchelle());
+            p.setDateNaissance(personnel.getDateNaissance());
+            p.setEtatSocial(personnel.getEtatSocial());
+            p.setGrade(personnel.getGrade());
+            p.setLieuAffectation(personnel.getLieuAffectation());
+            p.setLieuNaissance(personnel.getLieuNaissance());
+            p.setNombreEnfants(personnel.getNombreEnfants());
+            p.setNumeroLocation(personnel.getNumeroLocation());
+            p.setPrenom(personnel.getPrenom());
+            p.setTypePersonnel(personnel.getTypePersonnel());
+            personnelDao.save(p);
+            return p;
+            
         }
     }
 

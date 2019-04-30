@@ -13,7 +13,7 @@ import java.util.List;
  * @author abdou
  */
 public interface EntiteAdministratifService {
-    public EntiteAdministratif createEntiteAdministratif(EntiteAdministratif entiteAdministratif);
+    public int createEntiteAdministratif(EntiteAdministratif entiteAdministratif);
     public EntiteAdministratif findByReferenceEntiteAdministratif(String referenceEntiteAdministratif);
      public List<EntiteAdministratif> findAll();
      //public void deleteByReferenceEntiteAdministratif(String referenceEntiteAdministratif);

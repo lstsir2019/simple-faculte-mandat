@@ -19,5 +19,6 @@ import org.springframework.stereotype.Repository;
 public interface SousProjetDao extends JpaRepository<SousProjet, Long>{
     public SousProjet findByReferenceSousProjet(String referenceSousProjet);
      public List<SousProjet> findByProjetLibelleP(String libelleP);
+      
 }
 

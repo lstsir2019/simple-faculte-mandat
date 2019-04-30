@@ -21,4 +21,5 @@ public interface SousProjetService {
     public int creerSousProjet(SousProjet sousProjet);
     public List<SousProjet> findAll();
     public int deleteByReferenceSousProjet(String referenceSousProjet);
+    public int deleteSousProjetById(Long id);
 }

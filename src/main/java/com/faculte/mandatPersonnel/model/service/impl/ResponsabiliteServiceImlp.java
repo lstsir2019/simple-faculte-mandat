@@ -36,15 +36,15 @@ public class ResponsabiliteServiceImlp implements ResponsabiliteService {
     }
 
     @Override
-    public Responsabilite creerResopnsabilite(Responsabilite responsabilite) {
+    public int creerResopnsabilite(Responsabilite responsabilite) {
         Responsabilite r = findByPoste(responsabilite.getPoste());
         if (r != null) {
-            return null;
+            return -1;
         } else {
             r = new Responsabilite();
             r.setPoste(responsabilite.getPoste());
             responsabiliteDao.save(r);
-            return r;
+            return 1;
         }
 
     }

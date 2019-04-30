@@ -14,7 +14,8 @@ import java.util.List;
  */
 public interface PersonnelService {
      public Personnel findByCin(String cin);
-     public Personnel creerPersonnel(Personnel personnel);
+     public int creerPersonnel(Personnel personnel);
      public int deleteByCin(String cin);
      public List<Personnel> findAll();
+     public Personnel updatePersonnel(Personnel personnel);
 }

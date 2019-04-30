@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -35,6 +35,9 @@ public class MandatServiceImpl implements MandatService {
     @Autowired
     private ResponsabiliteService responsabiliteService;
 
+    @Autowired
+    private MandatService mandatService;
+
     @Override
     public List<Mandat> findAll() {
         return mandatDao.findAll();
@@ -46,15 +49,38 @@ public class MandatServiceImpl implements MandatService {
     }
 
     @Override
-    public Mandat creerMandat(Mandat mandat) {
+    public int creerMandat(Mandat mandat) {
         Personnel personnel = personnelService.findByCin(mandat.getPersonnel().getCin());
+//        if (mandat.getPersonnel().getCin() == null) {
+//            return -1;
+//        }
         EntiteAdministratif entite = entiteAdministratifService.findByReferenceEntiteAdministratif(mandat.getEntiteAdministratif().getReferenceEntiteAdministratif());
+//        if (mandat.getEntiteAdministratif().getReferenceEntiteAdministratif() == null) {
+//            return -2;
+//        }
         Responsabilite responsabilite = responsabiliteService.findByPoste(mandat.getResponsabilite().getPoste());
-        mandat.setPersonnel(personnel);
-        mandat.setEntiteAdministratif(entite);
-        mandat.setResponsabilite(responsabilite);
-        mandatDao.save(mandat);
-        return mandat;
+//        if (mandat.getResponsabilite().getPoste() == null) {
+//            return -3;
+//        } 
+//        else {
+            mandat.setPersonnel(personnel);
+            mandat.setEntiteAdministratif(entite);
+            mandat.setResponsabilite(responsabilite);
+            mandatDao.save(mandat);
+            return 1;
+
+//        }
+    }
+
+    @Override
+    public int deleteByMandatPersonnelCin(String cin) {
+        Mandat m = mandatService.findByPersonnelCin(cin);
+        if (m == null) {
+            return -1;
+        } else {
+            mandatDao.delete(m);
+            return 1;
+        }
 
     }
 
@@ -90,9 +116,4 @@ public class MandatServiceImpl implements MandatService {
         this.responsabiliteService = responsabiliteService;
     }
 
-    
-    
-    
-    
-    
 }

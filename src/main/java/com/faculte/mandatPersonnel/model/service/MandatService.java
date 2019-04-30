@@ -5,11 +5,7 @@
  */
 package com.faculte.mandatPersonnel.model.service;
 
-import com.faculte.mandatPersonnel.bean.EntiteAdministratif;
 import com.faculte.mandatPersonnel.bean.Mandat;
-import com.faculte.mandatPersonnel.bean.Personnel;
-import com.faculte.mandatPersonnel.bean.Responsabilite;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,7 +15,8 @@ import java.util.List;
 public interface MandatService {
 
     public Mandat findByPersonnelCin(String cin);
-    public Mandat creerMandat(Mandat mandat);
+    public int creerMandat(Mandat mandat);
+    public int deleteByMandatPersonnelCin(String cin);
     public List<Mandat> findAll();
 
 }

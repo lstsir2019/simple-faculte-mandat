@@ -31,13 +31,13 @@ public class Mandat implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateFinMandat;
     
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     private Personnel personnel;
     
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     private EntiteAdministratif entiteAdministratif;
     
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     private Responsabilite responsabilite;
 
     public Date getDateDebutMandat() {

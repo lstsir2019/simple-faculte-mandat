@@ -43,26 +43,22 @@ public class EntiteAdministratifServiceImpl implements EntiteAdministratifServic
     }
 
     @Override
-    public EntiteAdministratif createEntiteAdministratif(EntiteAdministratif entiteAdministratif) {
+    public int createEntiteAdministratif(EntiteAdministratif entiteAdministratif) {
         EntiteAdministratif ea = findByReferenceEntiteAdministratif(entiteAdministratif.getReferenceEntiteAdministratif());
         if (ea != null) {
-            System.out.println("ana f 1");
-            return null;
+            return -1;
         } else {
             ea = new EntiteAdministratif();
             SousProjet sp = sousProjetService.findByReferenceSousProjet(entiteAdministratif.getSousProjet().getReferenceSousProjet());
             if (sp != null) {
                 ea.setSousProjet(sp);
-           
-            ea.setReferenceEntiteAdministratif(entiteAdministratif.getReferenceEntiteAdministratif());
-            entiteAdministratifDao.save(ea);
-            return ea; 
-            }else{
-               System.out.println("ana f 2");
-
-               return null;
+                ea.setReferenceEntiteAdministratif(entiteAdministratif.getReferenceEntiteAdministratif());
+                entiteAdministratifDao.save(ea);
+                return 1;
+            } else {
+                return -2;
             }
-            
+
         }
     }
 

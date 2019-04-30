@@ -33,7 +33,7 @@ public class SousProjet implements Serializable {
     @OneToMany(mappedBy = "sousProjet")
     private List<EntiteAdministratif> entiteAdministratifs;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     private Projet projet;
 
     public Long getId() {

@@ -34,6 +34,8 @@ public class SousProjetServiceImpl implements SousProjetService{
         return sousProjetDao.findAll();
     }
 
+     
+    
     @Override
     public SousProjet findByReferenceSousProjet(String referenceSousProjet) {
         return sousProjetDao.findByReferenceSousProjet(referenceSousProjet);
@@ -71,6 +73,19 @@ public class SousProjetServiceImpl implements SousProjetService{
         }
     }
 
+    @Override
+    public int deleteSousProjetById(Long id) {
+        boolean sp = sousProjetDao.existsById(id);
+        if (!sp){
+            return -1;
+        }else{
+            SousProjet s = sousProjetDao.getOne(id);
+            sousProjetDao.delete(s);
+            return 1;
+        }
+    }
+
+  
     
     
     

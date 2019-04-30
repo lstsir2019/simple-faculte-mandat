@@ -13,7 +13,7 @@ import java.util.List;
  * @author abdou
  */
 public interface ResponsabiliteService {
-    public Responsabilite creerResopnsabilite(Responsabilite responsabilite);
+    public int creerResopnsabilite(Responsabilite responsabilite);
     public Responsabilite findByPoste(String poste);
     public List<Responsabilite> findAll();
     public int deleteByPoste(String poste);

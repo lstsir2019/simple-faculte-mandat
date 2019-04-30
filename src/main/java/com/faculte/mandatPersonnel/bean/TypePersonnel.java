@@ -6,8 +6,8 @@
 package com.faculte.mandatPersonnel.bean;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +27,7 @@ public class TypePersonnel implements Serializable {
     private String libelle;
 
     
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "typePersonnel")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "typePersonnel")
     private Personnel personnel;
 
     public Long getId() {
