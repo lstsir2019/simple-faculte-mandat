@@ -18,6 +18,6 @@ import org.springframework.stereotype.Repository;
 public interface TypePersonnelDao extends JpaRepository<TypePersonnel, Long>{
    public TypePersonnel findByPersonnel(Personnel personnel); 
    public TypePersonnel findByLibelle(String libelle);
-   
+
 }
 

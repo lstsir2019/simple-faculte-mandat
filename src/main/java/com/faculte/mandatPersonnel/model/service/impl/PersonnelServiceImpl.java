@@ -39,6 +39,11 @@ public class PersonnelServiceImpl implements PersonnelService {
     public Personnel findByCin(String cin) {
         return personnelDao.findByCin(cin);
     }
+    
+      @Override
+    public Personnel findByTypePersonnelLibelle(String libelle) {
+        return personnelDao.findByTypePersonnelLibelle(libelle);
+    }
 
     @Override
     public int creerPersonnel(Personnel personnel) {
@@ -73,15 +78,15 @@ public class PersonnelServiceImpl implements PersonnelService {
     }
 
     @Override
-    public Personnel updatePersonnel(Personnel personnel) {
+    public int updatePersonnel(Personnel personnel) {
         Personnel p = findByCin(personnel.getCin());
         if (p == null) {
-            return null;
+            return -1;
         } else {
             p.setCin(personnel.getCin());
             p.setNom(personnel.getNom());
-            p.setCodeEchelle(personnel.getCodeEchelle());
-            p.setCodeEchelon(personnel.getCodeEchelon());
+            p.setReferenceEchelle(personnel.getReferenceEchelle());
+            p.setReferenceEchelon(personnel.getReferenceEchelon());
             p.setDateAccesFonctionPublique(personnel.getDateAccesFonctionPublique());
             p.setDateActivation(personnel.getDateActivation());
             p.setDateDebutTypePersonnel(personnel.getDateDebutTypePersonnel());
@@ -96,7 +101,7 @@ public class PersonnelServiceImpl implements PersonnelService {
             p.setPrenom(personnel.getPrenom());
             p.setTypePersonnel(personnel.getTypePersonnel());
             personnelDao.save(p);
-            return p;
+            return 1;
             
         }
     }
@@ -125,4 +130,8 @@ public class PersonnelServiceImpl implements PersonnelService {
         this.personnelService = personnelService;
     }
 
+ 
+
+
+  
 }

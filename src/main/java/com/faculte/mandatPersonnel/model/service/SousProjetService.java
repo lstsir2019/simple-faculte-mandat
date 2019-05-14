@@ -5,7 +5,6 @@
  */
 package com.faculte.mandatPersonnel.model.service;
 
-import com.faculte.mandatPersonnel.bean.Projet;
 import com.faculte.mandatPersonnel.bean.SousProjet;
 import java.util.List;
 
@@ -22,4 +21,5 @@ public interface SousProjetService {
     public List<SousProjet> findAll();
     public int deleteByReferenceSousProjet(String referenceSousProjet);
     public int deleteSousProjetById(Long id);
+ //  public List<SousProjet> findByCriteria(String libelleP);
 }

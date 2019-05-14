@@ -6,8 +6,8 @@
 package com.faculte.mandatPersonnel.rest;
 
 
+import com.example.produitv2.commun.GeneratePdf;
 import com.faculte.mandatPersonnel.model.service.ProjetService;
-import com.faculte.mandatPersonnel.bean.Personnel;
 import com.faculte.mandatPersonnel.bean.Projet;
 import com.faculte.mandatPersonnel.bean.SousProjet;
 import com.faculte.mandatPersonnel.model.service.EntiteAdministratifService;
@@ -23,6 +23,7 @@ import com.faculte.mandatPersonnel.rest.converter.ProjetConverter;
 import com.faculte.mandatPersonnel.rest.converter.ResponsabiliteConverter;
 import com.faculte.mandatPersonnel.rest.converter.SousProjetConverter;
 import com.faculte.mandatPersonnel.rest.converter.TypePersonnelConverter;
+import com.faculte.mandatPersonnel.rest.proxy.EvolutionProxy;
 import com.faculte.mandatPersonnel.rest.vo.EntiteAdministratifVo;
 import com.faculte.mandatPersonnel.rest.vo.MandatVo;
 import com.faculte.mandatPersonnel.rest.vo.PersonnelVo;
@@ -30,8 +31,15 @@ import com.faculte.mandatPersonnel.rest.vo.ProjetVo;
 import com.faculte.mandatPersonnel.rest.vo.ResponsabiliteVo;
 import com.faculte.mandatPersonnel.rest.vo.SousProjetVo;
 import com.faculte.mandatPersonnel.rest.vo.TypePersonnelVo;
+import com.faculte.mandatPersonnel.rest.vo.exchange.EchelleVo;
+import com.faculte.mandatPersonnel.rest.vo.exchange.EchelonVo;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -73,6 +81,8 @@ public class MandatRest {
     @Autowired
     private MandatService mandatService;
 
+    @Autowired
+    private EvolutionProxy evolutionProxy;
     //------------Debut---------------------Entite Administratif----------------------------------------------//
     @GetMapping("/entiteAdministratif/")
     public List<EntiteAdministratifVo> findAllEntite() {
@@ -114,11 +124,8 @@ public class MandatRest {
     }
 
     @PostMapping("/projet/")
-    public ProjetVo creerProjet(@RequestBody ProjetVo projetVo) {
-        ProjetConverter projetConverter = new ProjetConverter();
-        Projet myProjet = projetConverter.toItem(projetVo);
-        Projet projet = projetService.creerProjet(myProjet);
-        return new ProjetConverter().toVo(projet);
+    public int creerProjet(@RequestBody ProjetVo projetVo) {
+        return projetService.creerProjet(new ProjetConverter().toItem(projetVo));
     }
 
     @DeleteMapping("/deleteP/{libelleP}")
@@ -126,6 +133,20 @@ public class MandatRest {
         return projetService.deleteByLibelleP(libelleP);
     }
 
+    @GetMapping("/projet/pdf")
+   // @Produces("application/pdf")
+    public ResponseEntity<Object> report(@PathVariable("libelleP") String libelleP) throws JRException,IOException{
+        Map<String ,Object > parameters = new HashMap<>();  
+        parameters.put("libelleP", "XXXX");
+        return GeneratePdf.generate("projet", parameters, sousProjetService.findByProjetLibelleP(libelleP), "/report/projetPdf.jasper");
+    }
+    
+    
+//    @PostMapping("/sous/libelleP/{libelleP}")
+//    public List<SousProjetVo> findByCriteria(@PathVariable("libelleP") String libelleP){
+//        return new SousProjetConverter().toVo(sousProjetService.findByCriteria(libelleP));
+//    }
+    
     //------------Fin---------------------Projet----------------------------------------------//
     //------------Debut---------------------Sous Projet----------------------------------------------//
     @GetMapping("/sousProjet/")
@@ -237,14 +258,25 @@ public class MandatRest {
         return personnelService.deleteByCin(cin);
     }
 
-    @PutMapping("/")
-    public PersonnelVo updatePersonnel(@RequestBody PersonnelVo personnelVo) {
-        PersonnelConverter personnelConverter = new PersonnelConverter();
-        Personnel p = personnelConverter.toItem(personnelVo);
-        Personnel personnel = personnelService.updatePersonnel(p);
-        return new PersonnelConverter().toVo(personnel);
+    @PutMapping("/update/{cin}/personnel/")
+    public int updatePersonnel( @PathVariable("cin") String cin ,@RequestBody PersonnelVo personnelVo) {
+        return personnelService.updatePersonnel(new PersonnelConverter().toItem(personnelVo));
 
     }
+    @GetMapping("/personnel/typePersonnel/{libelle}")
+    public PersonnelVo findByTypePersonnelLibelle(@PathVariable("libelle") String libelle) {
+        return new PersonnelConverter().toVo(personnelService.findByTypePersonnelLibelle(libelle));
+    }  
+    
+     @GetMapping("/referenceEchelle/{reference}")
+    public EchelleVo findEchelleByReference(@PathVariable("reference") String reference) {
+        return  evolutionProxy.findEchelleByReference(reference);
+    }  
+    
+    @GetMapping("/referenceEchelon/{reference}")
+    public List<EchelonVo> findEchelonsByReference(@PathVariable("reference") String reference) {
+        return  evolutionProxy.findEchelonsByReference(reference);
+    }  
     //----------Fin-------------------Personnel et type Personnel----------------------------------------------//
 
     //-------------------------------------------------GETTER/SETTER---------------------------------------------------//
@@ -288,4 +320,30 @@ public class MandatRest {
         this.sousProjetService = sousProjetService;
     }
 
+    public EntiteAdministratifService getEntiteAdministratifService() {
+        return entiteAdministratifService;
+    }
+
+    public void setEntiteAdministratifService(EntiteAdministratifService entiteAdministratifService) {
+        this.entiteAdministratifService = entiteAdministratifService;
+    }
+
+    public MandatService getMandatService() {
+        return mandatService;
+    }
+
+    public void setMandatService(MandatService mandatService) {
+        this.mandatService = mandatService;
+    }
+
+    public EvolutionProxy getEvolutionProxy() {
+        return evolutionProxy;
+    }
+
+    public void setEvolutionProxy(EvolutionProxy evolutionProxy) {
+        this.evolutionProxy = evolutionProxy;
+    }
+
+    
+    
 }

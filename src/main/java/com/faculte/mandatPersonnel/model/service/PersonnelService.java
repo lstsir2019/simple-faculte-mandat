@@ -17,5 +17,8 @@ public interface PersonnelService {
      public int creerPersonnel(Personnel personnel);
      public int deleteByCin(String cin);
      public List<Personnel> findAll();
-     public Personnel updatePersonnel(Personnel personnel);
+     public int updatePersonnel(Personnel personnel);
+       public Personnel findByTypePersonnelLibelle(String libelle);
+     
+     
 }

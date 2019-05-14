@@ -8,7 +8,6 @@ package com.faculte.mandatPersonnel.model.service.impl;
 import com.faculte.mandatPersonnel.bean.Projet;
 import com.faculte.mandatPersonnel.bean.SousProjet;
 import com.faculte.mandatPersonnel.model.dao.ProjetDao;
-import com.faculte.mandatPersonnel.model.service.EntiteAdministratifService;
 import com.faculte.mandatPersonnel.model.service.ProjetService;
 import com.faculte.mandatPersonnel.model.service.SousProjetService;
 import java.util.List;
@@ -27,10 +26,10 @@ public class ProjetServiceImpl implements ProjetService {
 
     @Autowired
     private SousProjetService sousProjetService;
-    
+
     @Autowired
     private ProjetService projetService;
-    
+
     @Override
     public Projet findByLibelleP(String libelleP) {
         return projetDao.findByLibelleP(libelleP);
@@ -42,10 +41,10 @@ public class ProjetServiceImpl implements ProjetService {
     }
 
     @Override
-    public Projet creerProjet(Projet projet) {
+    public int creerProjet(Projet projet) {
         Projet p = findByLibelleP(projet.getLibelleP());
         if (p != null) {
-            return null;
+            return -1;
         } else {
             projetDao.save(projet);
             List<SousProjet> sousProjets = projet.getSousProjets();
@@ -53,7 +52,7 @@ public class ProjetServiceImpl implements ProjetService {
                 sousProjet.setProjet(projet);
                 sousProjetService.creerSousProjet(sousProjet);
             }
-            return projet;
+            return 1;
         }
     }
 
@@ -96,5 +95,4 @@ public class ProjetServiceImpl implements ProjetService {
         this.projetService = projetService;
     }
 
-    
 }

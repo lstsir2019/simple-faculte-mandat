@@ -50,11 +50,17 @@ public class Personnel implements Serializable {
     private TypePersonnel typePersonnel;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateDebutTypePersonnel;
-    private String codeEchelle;
-    private String codeEchelon;
+    private String referenceEchelle;
+    private String referenceEchelon;
  
     public Personnel() {
     }
+
+    public Personnel(String grade) {
+        this.grade = grade;
+    }
+    
+    
     
     public Long getId() {
         return id;
@@ -189,20 +195,20 @@ public class Personnel implements Serializable {
         this.dateDebutTypePersonnel = dateDebutTypePersonnel;
     }
 
-    public String getCodeEchelle() {
-        return codeEchelle;
+    public String getReferenceEchelle() {
+        return referenceEchelle;
     }
 
-    public void setCodeEchelle(String codeEchelle) {
-        this.codeEchelle = codeEchelle;
+    public void setReferenceEchelle(String referenceEchelle) {
+        this.referenceEchelle = referenceEchelle;
     }
 
-    public String getCodeEchelon() {
-        return codeEchelon;
+    public String getReferenceEchelon() {
+        return referenceEchelon;
     }
 
-    public void setCodeEchelon(String codeEchelon) {
-        this.codeEchelon = codeEchelon;
+    public void setReferenceEchelon(String referenceEchelon) {
+        this.referenceEchelon = referenceEchelon;
     }
 
     @Override

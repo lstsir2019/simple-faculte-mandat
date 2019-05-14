@@ -26,8 +26,8 @@ public class PersonnelConverter extends AbstractConverter<Personnel ,PersonnelVo
             Personnel item = new Personnel();
             item.setId(vo.getId());
             item.setCin(vo.getCin());
-            item.setCodeEchelle(vo.getCodeEchelle());
-            item.setCodeEchelon(vo.getCodeEchelon());
+            item.setReferenceEchelle(vo.getReferenceEchelle());
+            item.setReferenceEchelon(vo.getReferenceEchelon());
             item.setDateAccesFonctionPublique(DateUtil.parse(vo.getDateAccesFonctionPublique()));
             item.setDateActivation(DateUtil.parse(vo.getDateActivation()));
             item.setDateDebutTypePersonnel(DateUtil.parse(vo.getDateDebutTypePersonnel()));
@@ -58,8 +58,8 @@ public class PersonnelConverter extends AbstractConverter<Personnel ,PersonnelVo
             PersonnelVo vo =new PersonnelVo();
             vo.setId(item.getId());
             vo.setCin(item.getCin());
-            vo.setCodeEchelle(item.getCodeEchelle());
-            vo.setCodeEchelon(item.getCodeEchelon());
+            vo.setReferenceEchelle(item.getReferenceEchelle());
+            vo.setReferenceEchelon(item.getReferenceEchelon());
             vo.setDateAccesFonctionPublique(DateUtil.formateDate(item.getDateAccesFonctionPublique()));
             vo.setDateActivation(DateUtil.formateDate(item.getDateActivation()));
             vo.setDateDebutTypePersonnel(DateUtil.formateDate(item.getDateDebutTypePersonnel()));
