@@ -21,7 +21,7 @@ public class ResponsabiliteConverter extends AbstractConverter<Responsabilite, R
         } else {
             Responsabilite item = new Responsabilite();
             item.setId(vo.getId());
-            item.setPoste(vo.getPoste());
+            item.setReferenceResponsabilite(vo.getReferenceResponsabilite());
             return item;
         }
     }
@@ -34,7 +34,7 @@ public class ResponsabiliteConverter extends AbstractConverter<Responsabilite, R
         else{
             ResponsabiliteVo vo =new ResponsabiliteVo();
             vo.setId(item.getId());
-            vo.setPoste(item.getPoste());
+            vo.setReferenceResponsabilite(item.getReferenceResponsabilite());
             return vo;
         }
     }

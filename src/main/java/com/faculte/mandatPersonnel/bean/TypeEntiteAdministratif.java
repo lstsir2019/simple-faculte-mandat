@@ -10,27 +10,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 /**
  *
- * @author abdou
+ * @author admin
  */
 @Entity
-public class EntiteAdministratif implements Serializable {
+public class TypeEntiteAdministratif implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String referenceEntiteAdministratif;
+    private String libelle;
+    private int reference;
 
-    @ManyToOne
-    private TypeEntiteAdministratif typeEntiteAdministratif;
+    public TypeEntiteAdministratif() {
+    }
 
-    @ManyToOne
-    private SousProjet sousProjet;
+    
+    public TypeEntiteAdministratif(String libelle, int reference) {
+        this.libelle = libelle;
+        this.reference = reference;
+    }
 
+    
     public Long getId() {
         return id;
     }
@@ -39,28 +43,20 @@ public class EntiteAdministratif implements Serializable {
         this.id = id;
     }
 
-    public String getReferenceEntiteAdministratif() {
-        return referenceEntiteAdministratif;
+    public String getLibelle() {
+        return libelle;
     }
 
-    public void setReferenceEntiteAdministratif(String referenceEntiteAdministratif) {
-        this.referenceEntiteAdministratif = referenceEntiteAdministratif;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 
-    public SousProjet getSousProjet() {
-        return sousProjet;
+    public int getReference() {
+        return reference;
     }
 
-    public void setSousProjet(SousProjet sousProjet) {
-        this.sousProjet = sousProjet;
-    }
-
-    public TypeEntiteAdministratif getTypeEntiteAdministratif() {
-        return typeEntiteAdministratif;
-    }
-
-    public void setTypeEntiteAdministratif(TypeEntiteAdministratif typeEntiteAdministratif) {
-        this.typeEntiteAdministratif = typeEntiteAdministratif;
+    public void setReference(int reference) {
+        this.reference = reference;
     }
 
     
@@ -74,10 +70,10 @@ public class EntiteAdministratif implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof EntiteAdministratif)) {
+        if (!(object instanceof TypeEntiteAdministratif)) {
             return false;
         }
-        EntiteAdministratif other = (EntiteAdministratif) object;
+        TypeEntiteAdministratif other = (TypeEntiteAdministratif) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -86,6 +82,7 @@ public class EntiteAdministratif implements Serializable {
 
     @Override
     public String toString() {
-        return "Com.faculte.MandatPersonnel.bean.EntiteAdministratif[ id=" + id + " ]";
+        return "com.faculte.mandatPersonnel.bean.TypeEntiteAdministratif[ id=" + id + " ]";
     }
+    
 }

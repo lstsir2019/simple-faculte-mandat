@@ -7,6 +7,7 @@ package com.faculte.mandatPersonnel.rest.vo;
 
 
 
+
 /**
  *
  * @author abdou
@@ -16,7 +17,7 @@ public class EntiteAdministratifVo {
     private Long id;
     private String referenceEntiteAdministratif;
     private SousProjetVo sousProjetVo;
-
+    private TypeEntiteAdministratifVo typeEntiteAdministratifVo;
     public Long getId() {
         return id;
     }
@@ -39,6 +40,14 @@ public class EntiteAdministratifVo {
 
     public void setSousProjetVo(SousProjetVo sousProjetVo) {
         this.sousProjetVo = sousProjetVo;
+    }
+
+    public TypeEntiteAdministratifVo getTypeEntiteAdministratifVo() {
+        return typeEntiteAdministratifVo;
+    }
+
+    public void setTypeEntiteAdministratifVo(TypeEntiteAdministratifVo typeEntiteAdministratifVo) {
+        this.typeEntiteAdministratifVo = typeEntiteAdministratifVo;
     }
 
     

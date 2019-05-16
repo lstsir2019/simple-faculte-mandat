@@ -43,17 +43,15 @@ public class ProjetServiceImpl implements ProjetService {
     @Override
     public int creerProjet(Projet projet) {
         Projet p = findByLibelleP(projet.getLibelleP());
-        if (p != null) {
-            return -1;
-        } else {
+        if (p == null) {
             projetDao.save(projet);
-            List<SousProjet> sousProjets = projet.getSousProjets();
-            for (SousProjet sousProjet : sousProjets) {
-                sousProjet.setProjet(projet);
-                sousProjetService.creerSousProjet(sousProjet);
-            }
-            return 1;
         }
+        List<SousProjet> sousProjets = projet.getSousProjets();
+        for (SousProjet sousProjet : sousProjets) {
+            sousProjet.setProjet(projet);
+            sousProjetService.creerSousProjet(sousProjet,projet.getId());
+        }
+        return 1;
     }
 
     @Override

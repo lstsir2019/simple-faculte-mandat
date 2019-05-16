@@ -15,6 +15,8 @@ import com.faculte.mandatPersonnel.model.service.MandatService;
 import com.faculte.mandatPersonnel.model.service.PersonnelService;
 import com.faculte.mandatPersonnel.model.service.ResponsabiliteService;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +51,40 @@ public class MandatServiceImpl implements MandatService {
     }
 
     @Override
+    public List<Mandat> findByEntiteAdministratifReferenceEntiteAdministratif(String referenceEntiteAdministratif) {
+        return mandatDao.findByEntiteAdministratifReferenceEntiteAdministratif(referenceEntiteAdministratif);
+    }
+
+    @Override
+    public List<Mandat> findByResponsabiliteReferenceResponsabilite(String referenceResponsabilite) {
+        return mandatDao.findByResponsabiliteReferenceResponsabilite(referenceResponsabilite);
+    }
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    public String constructQuery(String cin, String referenceEntiteAdministratif, String referenceResponsabilite) {
+        String query = "SELECT m From Mandat m where 1=1";
+        if (cin != null) {
+
+            query += " and m.personnel.cin = '" + cin + "'";
+
+        }
+        if (referenceEntiteAdministratif != null) {
+            query += " and m.entiteAdministratif.referenceEntiteAdministratif = '" + referenceEntiteAdministratif + "'";
+        }
+        if (referenceResponsabilite != null) {
+
+            query += " and m.responsabilite.referenceResponsabilite = '" + referenceResponsabilite + "'";
+        }
+        return query;
+    }
+
+    @Override
+    public List<Mandat> findByCriteria(String cin, String referenceEntiteAdministratif, String referenceResponsabilite) {
+        return entityManager.createQuery(constructQuery(cin, referenceEntiteAdministratif, referenceResponsabilite)).getResultList();
+    }
+
+    @Override
     public int creerMandat(Mandat mandat) {
         Personnel personnel = personnelService.findByCin(mandat.getPersonnel().getCin());
 //        if (mandat.getPersonnel().getCin() == null) {
@@ -58,16 +94,16 @@ public class MandatServiceImpl implements MandatService {
 //        if (mandat.getEntiteAdministratif().getReferenceEntiteAdministratif() == null) {
 //            return -2;
 //        }
-        Responsabilite responsabilite = responsabiliteService.findByPoste(mandat.getResponsabilite().getPoste());
+        Responsabilite responsabilite = responsabiliteService.findByReferenceResponsabilite(mandat.getResponsabilite().getReferenceResponsabilite());
 //        if (mandat.getResponsabilite().getPoste() == null) {
 //            return -3;
 //        } 
 //        else {
-            mandat.setPersonnel(personnel);
-            mandat.setEntiteAdministratif(entite);
-            mandat.setResponsabilite(responsabilite);
-            mandatDao.save(mandat);
-            return 1;
+        mandat.setPersonnel(personnel);
+        mandat.setEntiteAdministratif(entite);
+        mandat.setResponsabilite(responsabilite);
+        mandatDao.save(mandat);
+        return 1;
 
 //        }
     }

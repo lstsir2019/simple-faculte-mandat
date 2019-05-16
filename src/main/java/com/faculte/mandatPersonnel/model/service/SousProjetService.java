@@ -17,7 +17,7 @@ public interface SousProjetService {
 
     public SousProjet findByReferenceSousProjet(String referenceSousProjet);
     public List<SousProjet> findByProjetLibelleP(String libelleP);
-    public int creerSousProjet(SousProjet sousProjet);
+    public int creerSousProjet(SousProjet sousProjet,Long projet);
     public List<SousProjet> findAll();
     public int deleteByReferenceSousProjet(String referenceSousProjet);
     public int deleteSousProjetById(Long id);

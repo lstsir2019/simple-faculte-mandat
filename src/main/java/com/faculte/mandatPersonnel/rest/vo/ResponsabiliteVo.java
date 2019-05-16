@@ -11,7 +11,7 @@ package com.faculte.mandatPersonnel.rest.vo;
  */
 public class ResponsabiliteVo {
      private Long id;
-    private String poste ;
+    private String referenceResponsabilite ;
 
     public Long getId() {
         return id;
@@ -21,13 +21,14 @@ public class ResponsabiliteVo {
         this.id = id;
     }
 
-    public String getPoste() {
-        return poste;
+    public String getReferenceResponsabilite() {
+        return referenceResponsabilite;
     }
 
-    public void setPoste(String poste) {
-        this.poste = poste;
+    public void setReferenceResponsabilite(String referenceResponsabilite) {
+        this.referenceResponsabilite = referenceResponsabilite;
     }
-    
+
+   
     
 }

@@ -10,15 +10,17 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-
 /**
  *
  * @author abdou
  */
 @Repository
-public interface SousProjetDao extends JpaRepository<SousProjet, Long>{
-    public SousProjet findByReferenceSousProjet(String referenceSousProjet);
-     public List<SousProjet> findByProjetLibelleP(String libelleP);
-      
-}
+public interface SousProjetDao extends JpaRepository<SousProjet, Long> {
 
+    public SousProjet findByReferenceSousProjet(String referenceSousProjet);
+
+    public SousProjet findByReferenceSousProjetAndProjetId(String referenceSousProjet, Long id);
+
+    public List<SousProjet> findByProjetLibelleP(String libelleP);
+
+}

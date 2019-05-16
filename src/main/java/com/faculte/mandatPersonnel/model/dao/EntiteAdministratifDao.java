@@ -6,6 +6,7 @@
 package com.faculte.mandatPersonnel.model.dao;
 
 import com.faculte.mandatPersonnel.bean.EntiteAdministratif;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,5 +17,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EntiteAdministratifDao extends JpaRepository<EntiteAdministratif, Long>{
      public EntiteAdministratif findByReferenceEntiteAdministratif(String referenceEntiteAdministratif);
+     public List<EntiteAdministratif> findByTypeEntiteAdministratifReference(int reference);
+     public EntiteAdministratif findByTypeEntiteAdministratifLibelle(String libelle);
+     public EntiteAdministratif findByreferenceEntiteAdministratifAndTypeEntiteAdministratifReference(String refEnti,int refType);
 }
 

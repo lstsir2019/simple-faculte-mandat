@@ -3,8 +3,8 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="libelleP" class="java.lang.String"/>
-	<field name="id" class="java.lang.String"/>
+	<parameter name="libelleP" class="java.lang.String" isForPrompting="false"/>
+	<field name="id" class="java.lang.Long"/>
 	<field name="referenceSousProjet" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -37,7 +37,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<textField isBlankWhenNull="true">
 				<reportElement x="0" y="0" width="277" height="20" uuid="a3ba6117-eba1-4329-a7fa-e248376ee2b0"/>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>

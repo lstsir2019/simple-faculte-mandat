@@ -5,7 +5,7 @@
  */
 package com.faculte.mandatPersonnel.model.dao;
 
-import com.faculte.mandatPersonnel.bean.Responsabilite;
+import com.faculte.mandatPersonnel.bean.TypeEntiteAdministratif;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Repository;
  *
  * @author abdou
  */
-
 @Repository
-public interface ResponsabiliteDao extends JpaRepository<Responsabilite, Long>{
-    public Responsabilite findByReferenceResponsabilite(String referenceResponsabilite);
+public interface TypeEntiteAdministratifDao extends JpaRepository<TypeEntiteAdministratif, Long>{
+     public TypeEntiteAdministratif findByLibelle(String libelle);
+     public TypeEntiteAdministratif findByReference(int reference);
 }
 

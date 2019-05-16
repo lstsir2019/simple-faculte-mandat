@@ -42,9 +42,15 @@ public class SousProjetServiceImpl implements SousProjetService {
         return sousProjetDao.findByProjetLibelleP(libelleP);
     }
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Override
-    public int creerSousProjet(SousProjet sousProjet) {
-        sousProjetDao.save(sousProjet);
+    public int creerSousProjet(SousProjet sousProjet, Long projet) {
+        List<SousProjet> sps = entityManager.createQuery("SELECT sp From SousProjet sp where sp.referenceSousProjet='" + sousProjet.getReferenceSousProjet() + "' and sp.projet.id=" + projet).getResultList();
+        if (sps.isEmpty()) {
+            sousProjetDao.save(sousProjet);
+        }
         return 1;
     }
 

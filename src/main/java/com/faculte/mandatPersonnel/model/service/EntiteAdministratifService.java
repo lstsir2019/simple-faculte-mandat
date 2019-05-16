@@ -13,10 +13,21 @@ import java.util.List;
  * @author abdou
  */
 public interface EntiteAdministratifService {
+
     public int createEntiteAdministratif(EntiteAdministratif entiteAdministratif);
+
     public EntiteAdministratif findByReferenceEntiteAdministratif(String referenceEntiteAdministratif);
-     public List<EntiteAdministratif> findAll();
-     //public void deleteByReferenceEntiteAdministratif(String referenceEntiteAdministratif);
-     public int deleteEntite(String referenceEntiteAdministratif);
+
+    public List<EntiteAdministratif> findAll();
+    //public void deleteByReferenceEntiteAdministratif(String referenceEntiteAdministratif);
+
+    public int deleteEntite(String referenceEntiteAdministratif);
+
     public int updateEntite(EntiteAdministratif entite);
+
+    public List<EntiteAdministratif> findByTypeEntiteAdministratifReference(int reference);
+
+    public EntiteAdministratif findByTypeEntiteAdministratifLibelle(String libelle);
+
+    public EntiteAdministratif findByreferenceEntiteAdministratifAndTypeEntiteAdministratifReference(String refEnti, int refType);
 }

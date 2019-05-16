@@ -31,18 +31,18 @@ public class ResponsabiliteServiceImlp implements ResponsabiliteService {
     }
 
     @Override
-    public Responsabilite findByPoste(String poste) {
-        return responsabiliteDao.findByPoste(poste);
+    public Responsabilite findByReferenceResponsabilite(String referenceResponsabilite) {
+        return responsabiliteDao.findByReferenceResponsabilite(referenceResponsabilite);
     }
 
     @Override
     public int creerResopnsabilite(Responsabilite responsabilite) {
-        Responsabilite r = findByPoste(responsabilite.getPoste());
+        Responsabilite r = findByReferenceResponsabilite(responsabilite.getReferenceResponsabilite());
         if (r != null) {
             return -1;
         } else {
             r = new Responsabilite();
-            r.setPoste(responsabilite.getPoste());
+            r.setReferenceResponsabilite(responsabilite.getReferenceResponsabilite());
             responsabiliteDao.save(r);
             return 1;
         }
@@ -58,8 +58,8 @@ public class ResponsabiliteServiceImlp implements ResponsabiliteService {
     }
 
     @Override
-    public int deleteByPoste(String poste) {
-         Responsabilite r = responsabiliteService.findByPoste(poste);
+    public int deleteByReferenceResponsabilite(String referenceResponsabilite) {
+         Responsabilite r = responsabiliteService.findByReferenceResponsabilite(referenceResponsabilite);
           if (r == null) {
             return -1;
         } else { 

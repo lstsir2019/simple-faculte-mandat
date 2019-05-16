@@ -14,9 +14,11 @@ import java.util.List;
  */
 public interface MandatService {
 
-    public Mandat findByPersonnelCin(String cin);
     public int creerMandat(Mandat mandat);
     public int deleteByMandatPersonnelCin(String cin);
     public List<Mandat> findAll();
-
+    public Mandat findByPersonnelCin(String cin);
+   public List<Mandat> findByEntiteAdministratifReferenceEntiteAdministratif(String referenceEntiteAdministratif);
+    public List<Mandat> findByResponsabiliteReferenceResponsabilite(String referenceResponsabilite);
+    public List<Mandat> findByCriteria(String cin,String referenceEntiteAdministratif,String poste);
 }

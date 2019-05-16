@@ -22,27 +22,16 @@ public class Responsabilite implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String poste ;
+    private String referenceResponsabilite ;
 
     public Responsabilite() {
     }
 
-    
-    public Responsabilite(String poste) {
-        this.poste = poste;
-    }
-    
-    
-
-    public String getPoste() {
-        return poste;
+    public Responsabilite(String referenceResponsabilite) {
+        this.referenceResponsabilite = referenceResponsabilite;
     }
 
-    public void setPoste(String poste) {
-        this.poste = poste;
-    }
-    
-    
+  
 
     public Long getId() {
         return id;
@@ -52,6 +41,15 @@ public class Responsabilite implements Serializable {
         this.id = id;
     }
 
+    public String getReferenceResponsabilite() {
+        return referenceResponsabilite;
+    }
+
+    public void setReferenceResponsabilite(String referenceResponsabilite) {
+        this.referenceResponsabilite = referenceResponsabilite;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 0;

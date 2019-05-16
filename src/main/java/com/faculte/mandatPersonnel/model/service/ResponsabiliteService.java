@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface ResponsabiliteService {
     public int creerResopnsabilite(Responsabilite responsabilite);
-    public Responsabilite findByPoste(String poste);
+    public Responsabilite findByReferenceResponsabilite(String referenceResponsabilite);
     public List<Responsabilite> findAll();
-    public int deleteByPoste(String poste);
+    public int deleteByReferenceResponsabilite(String referenceResponsabilite);
 }
