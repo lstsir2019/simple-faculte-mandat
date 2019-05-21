@@ -59,6 +59,8 @@ public class TypeEntiteAdministratif implements Serializable {
         this.reference = reference;
     }
 
+     
+    
     
     @Override
     public int hashCode() {
