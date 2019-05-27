@@ -1,60 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e885c477-de61-4073-9ea0-70b5fa91780e">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="0.8264462809917367"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="12"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
 	<parameter name="libelleP" class="java.lang.String" isForPrompting="false"/>
-	<field name="id" class="java.lang.Long"/>
 	<field name="referenceSousProjet" class="java.lang.String"/>
+	<variable name="referenceSousProjet_1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{referenceSousProjet}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
-			<textField>
-				<reportElement x="253" y="49" width="100" height="20" uuid="4442e8d6-8a21-48c7-aeaa-a1393be17ec5"/>
-				<textFieldExpression><![CDATA[$P{libelleP}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="191" y="49" width="49" height="20" uuid="c3cd7256-b13b-4207-8f4b-10df1f7df6ba"/>
-				<text><![CDATA[Projet :]]></text>
-			</staticText>
+		<band height="157" splitType="Stretch">
+			<image>
+				<reportElement x="116" y="-17" width="315" height="123" uuid="29227744-95a4-4d38-a772-03aabede634f"/>
+				<imageExpression><![CDATA["C:\\Users\\abdou\\Documents\\NetBeansProjects\\simple-faculte-mandat\\src\\main\\resources\\assets\\img\\Dessin12.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="95" splitType="Stretch">
+			<staticText>
+				<reportElement x="127" y="0" width="267" height="35" uuid="cd6a7f3f-7842-4314-af7b-a356406ea277"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[ PROJET RAPPORT]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="86" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="277" height="20" uuid="f769d4c4-b47d-4916-af39-768d54d75c0c"/>
-				<text><![CDATA[id]]></text>
+				<reportElement x="187" y="13" width="85" height="31" uuid="c3cd7256-b13b-4207-8f4b-10df1f7df6ba"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Projet :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="277" y="0" width="277" height="20" uuid="1bf6f8b1-2937-4e90-b2e9-bf1ed8353c45"/>
-				<text><![CDATA[referenceSousProjet]]></text>
+				<reportElement mode="Transparent" x="130" y="56" width="277" height="30" backcolor="#FFCC99" uuid="271e509f-259d-4255-8d24-d60ca0623f19"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Les sous projets]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="271" y="17" width="189" height="31" uuid="4442e8d6-8a21-48c7-aeaa-a1393be17ec5"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{libelleP}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="23" splitType="Stretch">
-			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="0" width="277" height="20" uuid="a3ba6117-eba1-4329-a7fa-e248376ee2b0"/>
-				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
-			</textField>
+		<band height="29">
 			<textField>
-				<reportElement x="277" y="0" width="277" height="20" uuid="fd762815-9cff-4a6e-8f57-ad70e4ef8593"/>
-				<textFieldExpression><![CDATA[$F{referenceSousProjet}]]></textFieldExpression>
+				<reportElement x="130" y="-1" width="277" height="30" uuid="c9484b7c-7cb3-4c9d-9740-df38de086946"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[    $F{referenceSousProjet}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="124" splitType="Stretch">
+			<staticText>
+				<reportElement x="-10" y="104" width="555" height="20" uuid="ad1e6108-6306-44c0-bec6-b714424385ba"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Faculté des Sciences et Techniques]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="335" y="7" width="100" height="20" uuid="28c70045-8f1b-4023-a75d-928dbe459376"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Signature:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="-22" y="90" width="596" height="12" backcolor="#000066" uuid="91592cdc-613e-4c52-ba8e-c618b9942b42"/>
+			</rectangle>
+		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement style="Crosstab Data Text" x="0" y="-1" width="555" height="45" uuid="5c1f2996-0fee-41f7-85c3-12cfc2498f94"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ B.P 549, Av.Abdelkarim Elkhattabi, Guéliz Marrakech
+  Tél : (+212) 524 43 34 04  Fax: (+212) 524 43 31 70 ]]></text>
+			</staticText>
+		</band>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</summary>
 </jasperReport>

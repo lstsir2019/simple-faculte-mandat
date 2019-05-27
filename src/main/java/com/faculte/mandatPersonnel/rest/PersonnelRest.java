@@ -5,14 +5,22 @@
  */
 package com.faculte.mandatPersonnel.rest;
 
+import com.example.produitv2.commun.GeneratePdf;
+import com.faculte.mandatPersonnel.bean.Personnel;
 import com.faculte.mandatPersonnel.model.service.PersonnelService;
 import com.faculte.mandatPersonnel.rest.converter.PersonnelConverter;
 import com.faculte.mandatPersonnel.rest.proxy.EvolutionProxy;
 import com.faculte.mandatPersonnel.rest.vo.PersonnelVo;
 import com.faculte.mandatPersonnel.rest.vo.exchange.EchelleVo;
 import com.faculte.mandatPersonnel.rest.vo.exchange.EchelonVo;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,6 +55,10 @@ public class PersonnelRest {
     public PersonnelVo findByCin(@PathVariable("cin") String cin) {
         return new PersonnelConverter().toVo(personnelService.findByCin(cin));
     }
+//    @GetMapping("/personnelCin/{cin}")
+//    public List<PersonnelVo> findByPersonnelCin(@PathVariable("cin") String cin) {
+//        return new PersonnelConverter().toVo(personnelService.findByCin(cin));
+//    }
 
 //    @PostMapping("/")
 //    public PersonnelVo creerPersonnel(@RequestBody PersonnelVo personnelVo) {
@@ -86,6 +98,17 @@ public class PersonnelRest {
     }
 
     
+     @GetMapping("/personnel/{cin}/pdf")
+    // @Produces("application/pdf")
+    public ResponseEntity<Object> report(@PathVariable("cin") String cin) throws JRException, IOException {
+        Map<String, Object> parameters = new HashMap<>();        
+        //parameters.put("cin", cin);
+        Personnel personnel =personnelService.findByCin(cin);
+        List<Personnel> p = new ArrayList<>();
+        p.add(personnel);
+        return GeneratePdf.generate("personnel", parameters,p, "/report/personnelPdf.jasper");
+    }
+
     
     //---------------------------------------Getter & Setter--------------------------------------//
     

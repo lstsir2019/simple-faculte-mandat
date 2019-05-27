@@ -62,7 +62,7 @@ public class ProjetServiceImpl implements ProjetService {
         } else {
             List<SousProjet> sousProjets = sousProjetService.findByProjetLibelleP(libelleP);
             for (SousProjet sousProjet : sousProjets) {
-                sousProjetService.deleteByReferenceSousProjet(sousProjet.getReferenceSousProjet());
+                sousProjetService.deleteSousProjetById(sousProjet.getId());
             }
             projetDao.delete(projet);
             return 1;
