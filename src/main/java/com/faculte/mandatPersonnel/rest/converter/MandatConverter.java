@@ -41,6 +41,7 @@ public class MandatConverter extends AbstractConverter<Mandat, MandatVo> {
         }
         else{
             MandatVo vo =new MandatVo();
+            vo.setId(item.getId());
             vo.setDateDebutMandat(DateUtil.formateDate(item.getDateDebutMandat()));
             vo.setDateFinMandat(DateUtil.formateDate(item.getDateFinMandat()));
             vo.setPersonnelVo(new PersonnelConverter().toVo(item.getPersonnel()));

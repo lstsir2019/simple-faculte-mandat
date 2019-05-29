@@ -60,6 +60,11 @@ public class EntiteAdministratifRest {
 //        
 //    }
 
+    
+    @PostMapping("/chercherEntite")
+    public List<EntiteAdministratifVo> chercherEntiteAdmin(@RequestBody EntiteAdministratifVo entiteAdministratifVo) {
+        return new EntiteAdministratifConverter().toVo(entiteAdministratifService.chercherEntiteAdmin(entiteAdministratifVo.getReferenceEntiteAdministratif(),entiteAdministratifVo.getTypeEntiteAdministratifVo().getLibelle(),entiteAdministratifVo.getSousProjetVo().getReferenceSousProjet()));
+    }
     //----------------------------------Getter & Setter----------------------------------------------//
 
     

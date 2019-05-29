@@ -55,10 +55,37 @@ public class TypePersonnelServiceImpl implements TypePersonnelService{
         
     }
 
+    @Override
+    public int updateTypePersonnel(TypePersonnel typePersonnel) {
+         int tp = findById(typePersonnel.getId());
+        if (tp == 0) {
+            return -1;
+        } else {
+            System.out.println(typePersonnel.getLibelle());
+            typePersonnel.setId(typePersonnel.getId());
+            typePersonnel.setLibelle(typePersonnel.getLibelle());
+            typePersonnelDao.save(typePersonnel);
+            return  1;
+        }
+        
+    }
+
+    @Override
+    public int findById(Long id) {
+        boolean tp = typePersonnelDao.existsById(id);
+        if (!tp) {
+            return -1;
+        } else {
+            typePersonnelDao.getOne(id);
+            return 1;
+        }
+    }
+    }
+
   
     
    
 
   
-}
+
 

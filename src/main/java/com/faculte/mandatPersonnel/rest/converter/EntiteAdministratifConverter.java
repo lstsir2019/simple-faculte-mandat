@@ -10,6 +10,7 @@ import com.faculte.mandatPersonnel.bean.SousProjet;
 import com.faculte.mandatPersonnel.bean.TypeEntiteAdministratif;
 import com.faculte.mandatPersonnel.rest.vo.EntiteAdministratifVo;
 import com.faculte.mandatPersonnel.rest.vo.SousProjetVo;
+import com.faculte.mandatPersonnel.rest.vo.TypeEntiteAdministratifVo;
 
 /**
  *
@@ -58,6 +59,14 @@ public class EntiteAdministratifConverter extends AbstractConverter<EntiteAdmini
                 sp.setReferenceSousProjet(item.getSousProjet().getReferenceSousProjet());
                 vo.setSousProjetVo(sp);
 
+            }
+             TypeEntiteAdministratifVo tea = new TypeEntiteAdministratifVo();
+            if (item.getTypeEntiteAdministratif() != null) {
+                System.out.println("converter : not null");
+                System.out.println("convert of typeEntite" +item.getTypeEntiteAdministratif());
+                tea.setId(item.getTypeEntiteAdministratif().getId());
+                tea.setLibelle(item.getTypeEntiteAdministratif().getLibelle());
+                vo.setTypeEntiteAdministratifVo(tea);
             }
             return vo;
         }

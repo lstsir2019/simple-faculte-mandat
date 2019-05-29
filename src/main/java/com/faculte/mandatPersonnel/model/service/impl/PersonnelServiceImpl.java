@@ -11,8 +11,11 @@ import com.faculte.mandatPersonnel.model.dao.PersonnelDao;
 import com.faculte.mandatPersonnel.model.service.PersonnelService;
 import com.faculte.mandatPersonnel.model.service.TypePersonnelService;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import util.SearchUtil;
 
 /**
  *
@@ -39,8 +42,8 @@ public class PersonnelServiceImpl implements PersonnelService {
     public Personnel findByCin(String cin) {
         return personnelDao.findByCin(cin);
     }
-    
-      @Override
+
+    @Override
     public Personnel findByTypePersonnelLibelle(String libelle) {
         return personnelDao.findByTypePersonnelLibelle(libelle);
     }
@@ -99,12 +102,31 @@ public class PersonnelServiceImpl implements PersonnelService {
             p.setNombreEnfants(personnel.getNombreEnfants());
             p.setNumeroLocation(personnel.getNumeroLocation());
             p.setPrenom(personnel.getPrenom());
-            p.setTypePersonnel(personnel.getTypePersonnel());
+            typePersonnelService.updateTypePersonnel(personnel.getTypePersonnel());
             personnelDao.save(p);
-            return 1;
-            
+            return 1; 
+
         }
     }
+    
+    
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    public List<Personnel> chercherPersonnel(String cin, String libelle) {
+
+        String query = "select p from Personnel p where 1=1";
+        if (cin != null && !cin.equals("")) {
+            query += SearchUtil.addConstraint("p", "cin", "LIKE", cin);
+        }
+        if (libelle != null&& !libelle.equals("")) {
+            query += SearchUtil.addConstraint("p", "typePersonnel.libelle", "LIKE", libelle);
+
+        }
+        System.out.println("query --->" + query);
+        return entityManager.createQuery(query).getResultList();
+    }
+
 
     public PersonnelDao getPersonnelDao() {
         return personnelDao;
@@ -130,8 +152,4 @@ public class PersonnelServiceImpl implements PersonnelService {
         this.personnelService = personnelService;
     }
 
- 
-
-
-  
 }

@@ -77,8 +77,8 @@ public class PersonnelRest {
         return personnelService.deleteByCin(cin);
     }
 
-    @PutMapping("/updatePersonnel/{cin}")
-    public int updatePersonnel(@PathVariable("cin") String cin, @RequestBody PersonnelVo personnelVo) {
+    @PutMapping("/updatePersonnel")
+    public int updatePersonnel(@RequestBody PersonnelVo personnelVo) {
         return personnelService.updatePersonnel(new PersonnelConverter().toItem(personnelVo));
     }
 
@@ -97,22 +97,23 @@ public class PersonnelRest {
         return evolutionProxy.findEchelonsByReference(reference);
     }
 
-    
-     @GetMapping("/personnel/{cin}/pdf")
+    @GetMapping("/personnel/{cin}/pdf")
     // @Produces("application/pdf")
     public ResponseEntity<Object> report(@PathVariable("cin") String cin) throws JRException, IOException {
-        Map<String, Object> parameters = new HashMap<>();        
+        Map<String, Object> parameters = new HashMap<>();
         //parameters.put("cin", cin);
-        Personnel personnel =personnelService.findByCin(cin);
+        Personnel personnel = personnelService.findByCin(cin);
         List<Personnel> p = new ArrayList<>();
         p.add(personnel);
-        return GeneratePdf.generate("personnel", parameters,p, "/report/personnelPdf.jasper");
+        return GeneratePdf.generate("personnel", parameters, p, "/report/personnelPdf.jasper");
     }
 
-    
+    @PostMapping("/chercherPersonnel")
+    public List<PersonnelVo> chercherPersonnel(@RequestBody PersonnelVo personnelVo) {
+        return new PersonnelConverter().toVo(personnelService.chercherPersonnel(personnelVo.getCin(),personnelVo.getTypePersonnelVo().getLibelle()));
+    }
+
     //---------------------------------------Getter & Setter--------------------------------------//
-    
-    
     public PersonnelService getPersonnelService() {
         return personnelService;
     }
@@ -128,7 +129,5 @@ public class PersonnelRest {
     public void setEvolutionProxy(EvolutionProxy evolutionProxy) {
         this.evolutionProxy = evolutionProxy;
     }
-    
-    
-    
+
 }

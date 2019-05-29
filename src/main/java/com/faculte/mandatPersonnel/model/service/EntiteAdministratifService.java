@@ -30,4 +30,6 @@ public interface EntiteAdministratifService {
     public EntiteAdministratif findByTypeEntiteAdministratifLibelle(String libelle);
 
     public EntiteAdministratif findByreferenceEntiteAdministratifAndTypeEntiteAdministratifReference(String refEnti, int refType);
+
+    public List<EntiteAdministratif> chercherEntiteAdmin(String referenceEntiteAdministratif, String libelle, String referenceSousProjet);
 }

@@ -11,8 +11,11 @@ import com.faculte.mandatPersonnel.model.dao.ProjetDao;
 import com.faculte.mandatPersonnel.model.service.ProjetService;
 import com.faculte.mandatPersonnel.model.service.SousProjetService;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import util.SearchUtil;
 
 /**
  *
@@ -49,7 +52,7 @@ public class ProjetServiceImpl implements ProjetService {
         List<SousProjet> sousProjets = projet.getSousProjets();
         for (SousProjet sousProjet : sousProjets) {
             sousProjet.setProjet(projet);
-            sousProjetService.creerSousProjet(sousProjet,projet.getId());
+            sousProjetService.creerSousProjet(sousProjet, projet.getId());
         }
         return 1;
     }
@@ -67,6 +70,20 @@ public class ProjetServiceImpl implements ProjetService {
             projetDao.delete(projet);
             return 1;
         }
+    }
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Override
+    public List<Projet> chercherProjet(String libelleP) {
+
+        String query = "select p from Projet p where 1=1";
+        if (libelleP != null && !libelleP.equals("")) {
+            query += SearchUtil.addConstraint("p", "libelleP", "LIKE", libelleP);
+        }
+        System.out.println("query --->" + query);
+        return entityManager.createQuery(query).getResultList();
     }
 
     public ProjetDao getProjetDao() {

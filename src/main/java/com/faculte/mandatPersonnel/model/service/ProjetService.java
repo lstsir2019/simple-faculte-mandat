@@ -6,7 +6,6 @@
 package com.faculte.mandatPersonnel.model.service;
 
 import com.faculte.mandatPersonnel.bean.Projet;
-import com.faculte.mandatPersonnel.bean.SousProjet;
 import java.util.List;
 
 /**
@@ -23,5 +22,6 @@ public interface ProjetService {
 
     public int deleteByLibelleP(String libelleP);
 
-    
+    public List<Projet> chercherProjet(String libelleP);
+
 }

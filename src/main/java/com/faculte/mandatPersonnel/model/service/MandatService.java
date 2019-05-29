@@ -20,5 +20,5 @@ public interface MandatService {
     public Mandat findByPersonnelCin(String cin);
    public List<Mandat> findByEntiteAdministratifReferenceEntiteAdministratif(String referenceEntiteAdministratif);
     public List<Mandat> findByResponsabiliteReferenceResponsabilite(String referenceResponsabilite);
-    public List<Mandat> findByCriteria(String cin,String referenceEntiteAdministratif,String poste);
+    public List<Mandat> chercherMandat(String cin, String referenceEntiteAdministratif, String referenceResponsabilite);
 }

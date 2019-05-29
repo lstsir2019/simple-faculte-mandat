@@ -75,6 +75,10 @@ public class ProjetRest {
 //        return new SousProjetConverter().toVo(sousProjetService.findByCriteria(libelleP));
 //    }
 
+    @PostMapping("/chercherProjet")
+    public List<ProjetVo> chercherProjet(@RequestBody ProjetVo projetVo) {
+        return new ProjetConverter().toVo(projetService.chercherProjet(projetVo.getLibelleP()));
+    }
     
     
     //------------------------------------Getter & Setter-----------------------------------------//

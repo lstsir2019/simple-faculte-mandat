@@ -19,6 +19,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import util.SearchUtil;
 
 /**
  *
@@ -62,27 +63,24 @@ public class MandatServiceImpl implements MandatService {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public String constructQuery(String cin, String referenceEntiteAdministratif, String referenceResponsabilite) {
-        String query = "SELECT m From Mandat m where 1=1";
-        if (cin != null) {
-
-            query += " and m.personnel.cin = '" + cin + "'";
-
-        }
-        if (referenceEntiteAdministratif != null) {
-            query += " and m.entiteAdministratif.referenceEntiteAdministratif = '" + referenceEntiteAdministratif + "'";
-        }
-        if (referenceResponsabilite != null) {
-
-            query += " and m.responsabilite.referenceResponsabilite = '" + referenceResponsabilite + "'";
-        }
-        return query;
-    }
-
     @Override
-    public List<Mandat> findByCriteria(String cin, String referenceEntiteAdministratif, String referenceResponsabilite) {
-        return entityManager.createQuery(constructQuery(cin, referenceEntiteAdministratif, referenceResponsabilite)).getResultList();
+    public List<Mandat> chercherMandat(String cin, String referenceEntiteAdministratif, String referenceResponsabilite) {
+
+        String query = "select m from Mandat m where 1=1";
+        if (cin != null && !cin.equals("")) {
+            query += SearchUtil.addConstraint("m", "personnel.cin", "LIKE", cin);
+        }
+        if (referenceEntiteAdministratif != null && !referenceEntiteAdministratif.equals("")) {
+            query += SearchUtil.addConstraint("m", "entiteAdministratif.referenceEntiteAdministratif", "LIKE", referenceEntiteAdministratif);
+        }
+        if (referenceResponsabilite != null && !referenceResponsabilite.equals("")) {
+            query += SearchUtil.addConstraint("m", "responsabilite.referenceResponsabilite", "LIKE", referenceResponsabilite);
+        }
+        System.out.println("query --->" + query);
+        return entityManager.createQuery(query).getResultList();
     }
+
+    
 
     @Override
     public int creerMandat(Mandat mandat) {

@@ -19,5 +19,7 @@ public interface TypePersonnelService {
     public TypePersonnel createTypePersonnel(String libelle);
     public TypePersonnel findByLibelle(String libelle);
     public List<TypePersonnel> findAll();
+    public int updateTypePersonnel(TypePersonnel typePersonnel);
+    public int findById(Long id);
 }
 

@@ -14,9 +14,12 @@ import com.faculte.mandatPersonnel.model.service.EntiteAdministratifService;
 import com.faculte.mandatPersonnel.model.service.SousProjetService;
 import com.faculte.mandatPersonnel.model.service.TypeEntiteAdministratifService;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import util.SearchUtil;
 
 /**
  *
@@ -98,6 +101,34 @@ public class EntiteAdministratifServiceImpl implements EntiteAdministratifServic
             return 1;
         }
     }
+    
+    
+    
+    
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Override
+   public List<EntiteAdministratif> chercherEntiteAdmin(String referenceEntiteAdministratif, String libelle, String referenceSousProjet) {
+
+        String query = "select e from EntiteAdministratif e where 1=1";
+        if (referenceEntiteAdministratif != null && !referenceEntiteAdministratif.equals("")) {
+            query += SearchUtil.addConstraint("e", "referenceEntiteAdministratif", "LIKE", referenceEntiteAdministratif);
+        }
+        
+        if (libelle != null&& !libelle.equals("")) {
+            
+            query += SearchUtil.addConstraint("e", "typeEntiteAdministratif.libelle", "LIKE", libelle);
+
+        }
+        if (referenceSousProjet != null&& !referenceSousProjet.equals("")) {
+            query += SearchUtil.addConstraint("e", "sousProjet.referenceSousProjet", "LIKE", referenceSousProjet);
+
+        }
+        System.out.println("query --->" + query);
+        return entityManager.createQuery(query).getResultList();
+    }
+
 
     @Override
     public EntiteAdministratif findByreferenceEntiteAdministratifAndTypeEntiteAdministratifReference(String refEnti, int refType) {

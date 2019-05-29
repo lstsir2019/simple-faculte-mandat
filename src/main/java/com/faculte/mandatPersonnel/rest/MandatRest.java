@@ -58,9 +58,9 @@ public class MandatRest {
         return new MandatConverter().toVo(mandatService.findByResponsabiliteReferenceResponsabilite(referenceResponsabilite));
     }
     
-    @PostMapping("/chercher/personnel/{cin}/entite/{referenceEntiteAdministratif}/responsabilite/{referenceResponsabilite}")
-    public List<MandatVo> findByCriteria(@PathVariable("cin") String cin, @PathVariable("referenceResponsabilite") String referenceResponsabilite, @PathVariable("referenceEntiteAdministratif") String referenceEntiteAdministratif) {
-        return new MandatConverter().toVo(mandatService.findByCriteria(cin, referenceEntiteAdministratif, referenceResponsabilite));
+    @PostMapping("/chercherMandat")
+    public List<MandatVo> chercherMandat(@RequestBody MandatVo mandatVo) {
+        return new MandatConverter().toVo(mandatService.chercherMandat(mandatVo.getPersonnelVo().getCin(), mandatVo.getEntiteAdministratifVo().getReferenceEntiteAdministratif(), mandatVo.getResponsabiliteVo().getReferenceResponsabilite()));
     }
     
     @PostMapping("/")
