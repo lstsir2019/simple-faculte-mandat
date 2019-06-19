@@ -5,16 +5,25 @@
  */
 package com.faculte.mandatPersonnel.rest;
 
+import com.example.produitv2.commun.GeneratePdf;
+import com.faculte.mandatPersonnel.bean.EntiteAdministratif;
 import com.faculte.mandatPersonnel.model.service.EntiteAdministratifService;
 import com.faculte.mandatPersonnel.rest.converter.EntiteAdministratifConverter;
 import com.faculte.mandatPersonnel.rest.vo.EntiteAdministratifVo;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,19 +61,28 @@ public class EntiteAdministratifRest {
         return entiteAdministratifService.deleteEntite(referenceEntiteAdministratif);
     }
     
-//   @PutMapping("/update/")
-//    public int updateEntite(@RequestBody EntiteAdministratifVo entiteAdministratifVo) {
-//        EntiteAdministratif e=EntiteAdministratifConverter().toItem(entiteAdministratifVo);
-//        
-//        return entiteAdministratifService.updateEntite(e);
-//        
-//    }
+ @PutMapping("/updateEntiteAdmin")
+    public int updateEntite(@RequestBody EntiteAdministratifVo entiteAdministratifVo) {
+        return entiteAdministratifService.updateEntite(new EntiteAdministratifConverter().toItem(entiteAdministratifVo));
+    }
 
     
     @PostMapping("/chercherEntite")
     public List<EntiteAdministratifVo> chercherEntiteAdmin(@RequestBody EntiteAdministratifVo entiteAdministratifVo) {
         return new EntiteAdministratifConverter().toVo(entiteAdministratifService.chercherEntiteAdmin(entiteAdministratifVo.getReferenceEntiteAdministratif(),entiteAdministratifVo.getTypeEntiteAdministratifVo().getLibelle(),entiteAdministratifVo.getSousProjetVo().getReferenceSousProjet()));
     }
+     @GetMapping("/entite/{referenceEntiteAdministratif}/pdf")
+    // @Produces("application/pdf")
+    public ResponseEntity<Object> report(@PathVariable("referenceEntiteAdministratif") String referenceEntiteAdministratif) throws JRException, IOException {
+         Map<String, Object> parameters = new HashMap<>();
+        //parameters.put("cin", cin);
+        EntiteAdministratif  entite = entiteAdministratifService.findByReferenceEntiteAdministratif(referenceEntiteAdministratif);
+        List<EntiteAdministratif> e = new ArrayList<>();
+        e.add(entite);
+        return GeneratePdf.generate("entite", parameters, e, "/report/entitePdf.jasper");
+    }
+
+    
     //----------------------------------Getter & Setter----------------------------------------------//
 
     

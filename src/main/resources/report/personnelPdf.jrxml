@@ -11,60 +11,66 @@
 	<field name="dateDebutTypePersonnel" class="java.util.Date"/>
 	<field name="referenceEchelle" class="java.lang.String"/>
 	<field name="referenceEchelon" class="java.lang.String"/>
-	<field name="dateExerciceEchelle" class="java.lang.String"/>
+	<field name="dateExerciceEchelle" class="java.util.Date"/>
 	<field name="numeroLocation" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="251" splitType="Stretch">
+		<band height="242" splitType="Stretch">
 			<staticText>
-				<reportElement x="41" y="170" width="463" height="35" uuid="9685ac3a-c0de-4618-9f70-d08d7b6ef05f"/>
+				<reportElement x="14" y="121" width="534" height="79" backcolor="#FF6633" uuid="9685ac3a-c0de-4618-9f70-d08d7b6ef05f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="24" isBold="true" isUnderline="true"/>
+					<font fontName="Agency FB" size="34" isBold="true" isUnderline="true" isStrikeThrough="false"/>
 				</textElement>
 				<text><![CDATA[INFORMATIONS PERSONNELS]]></text>
 			</staticText>
 			<image>
-				<reportElement x="109" y="0" width="317" height="128" uuid="aa3e1875-e48e-49aa-a311-62fa14f2f239"/>
+				<reportElement x="132" y="-19" width="278" height="102" forecolor="#000000" uuid="aa3e1875-e48e-49aa-a311-62fa14f2f239"/>
 				<imageExpression><![CDATA["C:\\Users\\abdou\\Documents\\NetBeansProjects\\simple-faculte-mandat\\src\\main\\resources\\assets\\img\\Dessin12.png"]]></imageExpression>
 			</image>
+			<rectangle>
+				<reportElement x="-18" y="106" width="591" height="9" backcolor="#000066" uuid="272d983b-47fa-4d9d-96bb-8389ce34f300"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-18" y="213" width="591" height="9" backcolor="#000066" uuid="306a54e8-86c6-4e29-b63f-2100710db0d1"/>
+			</rectangle>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="203" splitType="Stretch">
+		<band height="208" splitType="Stretch">
 			<textField>
-				<reportElement x="297" y="32" width="198" height="39" uuid="728fb1a4-3f24-441e-9785-b584506b0d57"/>
+				<reportElement x="326" y="22" width="198" height="39" uuid="728fb1a4-3f24-441e-9785-b584506b0d57"/>
 				<textElement>
-					<font size="24"/>
+					<font fontName="Arial" size="24"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{typePersonnel.libelle}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="276" y="111" width="75" height="41" uuid="d92557e8-bbd2-4bcc-aecd-a42bb7eabea2"/>
+				<reportElement x="303" y="105" width="94" height="41" uuid="d92557e8-bbd2-4bcc-aecd-a42bb7eabea2"/>
 				<textElement>
-					<font size="18"/>
+					<font fontName="Arial" size="20"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nom}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="351" y="111" width="101" height="41" uuid="3af60897-8328-4578-ad5f-14cd903332a3"/>
+				<reportElement x="393" y="105" width="120" height="41" uuid="3af60897-8328-4578-ad5f-14cd903332a3"/>
 				<textElement>
-					<font size="18"/>
+					<font fontName="Arial" size="20"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="102" y="32" width="189" height="39" uuid="b87e933c-c161-478d-bb01-6ed9fad24b8b"/>
+				<reportElement x="56" y="16" width="270" height="49" uuid="b87e933c-c161-478d-bb01-6ed9fad24b8b"/>
 				<textElement>
-					<font size="24"/>
+					<font fontName="Agency FB" size="30" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Type Personnel :]]></text>
+				<text><![CDATA[Type personnel :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="121" y="111" width="145" height="41" uuid="00956651-eb7c-4068-af4a-b6ea3d513288"/>
+				<reportElement x="91" y="99" width="212" height="45" uuid="00956651-eb7c-4068-af4a-b6ea3d513288"/>
 				<textElement>
-					<font size="18"/>
+					<font fontName="Agency FB" size="26" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nom et Prénom :]]></text>
 			</staticText>
@@ -73,7 +79,7 @@
 	<columnHeader>
 		<band height="21" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="1" width="55" height="20" uuid="e35d9fe0-94c0-441a-ae70-05044fab4e18"/>
+				<reportElement x="-9" y="1" width="64" height="20" uuid="e35d9fe0-94c0-441a-ae70-05044fab4e18"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -82,12 +88,12 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font fontName="Agency FB" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cin]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="191" y="1" width="44" height="20" uuid="50e3c84e-c86f-4a8b-a4ce-3fc45f3c3fc0"/>
+				<reportElement x="196" y="1" width="44" height="20" uuid="50e3c84e-c86f-4a8b-a4ce-3fc45f3c3fc0"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -96,12 +102,12 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font fontName="Agency FB" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Grade]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="235" y="1" width="53" height="20" uuid="3cab99fe-3e06-4be9-84ac-8dc455a6c165"/>
+				<reportElement x="241" y="1" width="67" height="20" uuid="3cab99fe-3e06-4be9-84ac-8dc455a6c165"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -110,12 +116,12 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font fontName="Agency FB" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Echelle]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="55" y="1" width="136" height="20" uuid="6a39e4da-0b44-4a8e-b158-602e8bfd6c07"/>
+				<reportElement x="55" y="1" width="141" height="20" uuid="6a39e4da-0b44-4a8e-b158-602e8bfd6c07"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -124,12 +130,12 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font fontName="Agency FB" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Début type personnel]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="288" y="1" width="55" height="20" uuid="d238d07a-2174-4cb1-a538-3ebc61f9840a"/>
+				<reportElement x="309" y="1" width="64" height="20" uuid="d238d07a-2174-4cb1-a538-3ebc61f9840a"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -138,12 +144,12 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font fontName="Agency FB" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Echelon]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="344" y="1" width="107" height="20" uuid="75bdd60e-d92a-4e55-90c9-9ad7ec8c65aa"/>
+				<reportElement x="374" y="1" width="101" height="20" uuid="75bdd60e-d92a-4e55-90c9-9ad7ec8c65aa"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -152,12 +158,12 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font fontName="Agency FB" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Exercice d'echelle]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="452" y="1" width="103" height="20" uuid="9f692a26-ff6f-4b9a-bd44-67377e24e503"/>
+				<reportElement x="475" y="1" width="93" height="20" uuid="9f692a26-ff6f-4b9a-bd44-67377e24e503"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -166,16 +172,16 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font fontName="Agency FB" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Numéro Location]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="228" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="55" height="20" uuid="97f340bd-34ce-41d4-844b-85ec80c4db82"/>
+				<reportElement x="-9" y="0" width="64" height="20" uuid="97f340bd-34ce-41d4-844b-85ec80c4db82"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -184,12 +190,12 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cin}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="191" y="0" width="44" height="20" uuid="0e2ae60d-3331-4711-a41d-ded4448f57c1"/>
+				<reportElement x="196" y="0" width="44" height="20" uuid="0e2ae60d-3331-4711-a41d-ded4448f57c1"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -198,12 +204,12 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{grade}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="235" y="0" width="53" height="20" uuid="8ed4a253-0e23-41fc-998e-cdd73d3a5e59"/>
+				<reportElement x="241" y="0" width="67" height="20" uuid="8ed4a253-0e23-41fc-998e-cdd73d3a5e59"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -212,12 +218,12 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{referenceEchelle}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="56" y="0" width="135" height="20" uuid="37605846-f39a-40b3-b433-8c5a2bb3f428"/>
+				<reportElement x="56" y="0" width="140" height="20" uuid="37605846-f39a-40b3-b433-8c5a2bb3f428"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -226,12 +232,12 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dateDebutTypePersonnel}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="288" y="0" width="56" height="20" uuid="bf2bcfe5-f95d-4635-a5ff-0b6c2bbefc83"/>
+				<reportElement x="309" y="0" width="65" height="20" uuid="bf2bcfe5-f95d-4635-a5ff-0b6c2bbefc83"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -240,12 +246,12 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{referenceEchelon}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="344" y="0" width="108" height="20" uuid="33bf7730-c8c9-4d9b-8ba1-9d7d6c03a525"/>
+				<reportElement x="374" y="0" width="101" height="20" uuid="33bf7730-c8c9-4d9b-8ba1-9d7d6c03a525"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -254,12 +260,12 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dateExerciceEchelle}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="452" y="0" width="103" height="20" uuid="e0791767-e183-4de9-90ac-a9f66d9c884e"/>
+				<reportElement x="475" y="0" width="93" height="20" uuid="e0791767-e183-4de9-90ac-a9f66d9c884e"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -268,30 +274,34 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{numeroLocation}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="158" y="33" width="216" height="195" uuid="2b4a4504-36eb-41ba-8387-9c354ec57f68"/>
+				<imageExpression><![CDATA["C:\\Users\\abdou\\Documents\\NetBeansProjects\\simple-faculte-mandat\\src\\main\\resources\\assets\\img\\logo.png"]]></imageExpression>
+			</image>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch">
+		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement x="136" y="25" width="283" height="20" uuid="25163058-ed2e-4b04-bcd9-c8ee8a7761b4"/>
+				<reportElement x="166" y="40" width="237" height="20" uuid="25163058-ed2e-4b04-bcd9-c8ee8a7761b4"/>
 				<textElement>
 					<font size="13" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ Faculté des Sciences et Techniques]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="-20" y="6" width="591" height="9" backcolor="#000066" uuid="b29b66a1-2ba0-4ffc-afb4-bcf15cb609db"/>
+				<reportElement x="-18" y="31" width="591" height="9" backcolor="#000066" uuid="b29b66a1-2ba0-4ffc-afb4-bcf15cb609db"/>
 			</rectangle>
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="48" splitType="Stretch">
+		<band height="40" splitType="Stretch">
 			<staticText>
-				<reportElement x="92" y="4" width="371" height="40" uuid="64735b38-f809-4057-a2d9-79b407455d92"/>
+				<reportElement x="115" y="1" width="337" height="39" uuid="64735b38-f809-4057-a2d9-79b407455d92"/>
 				<textElement>
 					<font size="13" isBold="true"/>
 				</textElement>

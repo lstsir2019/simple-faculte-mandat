@@ -80,8 +80,6 @@ public class MandatServiceImpl implements MandatService {
         return entityManager.createQuery(query).getResultList();
     }
 
-    
-
     @Override
     public int creerMandat(Mandat mandat) {
         Personnel personnel = personnelService.findByCin(mandat.getPersonnel().getCin());
@@ -104,6 +102,18 @@ public class MandatServiceImpl implements MandatService {
         return 1;
 
 //        }
+    }
+
+    @Override
+    public int updateMandat(Mandat mandat) {
+        Personnel p = personnelService.findByCin(mandat.getPersonnel().getCin());
+        Responsabilite r = responsabiliteService.findByReferenceResponsabilite(mandat.getResponsabilite().getReferenceResponsabilite());
+        EntiteAdministratif e = entiteAdministratifService.findByReferenceEntiteAdministratif(mandat.getEntiteAdministratif().getReferenceEntiteAdministratif());
+        mandat.setPersonnel(p);
+        mandat.setResponsabilite(r);
+        mandat.setEntiteAdministratif(e);
+        mandatDao.save(mandat);
+        return 1;
     }
 
     @Override

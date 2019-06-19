@@ -6,6 +6,7 @@
 package com.faculte.mandatPersonnel.rest;
 
 import com.example.produitv2.commun.GeneratePdf;
+import com.faculte.mandatPersonnel.bean.Projet;
 import com.faculte.mandatPersonnel.model.service.ProjetService;
 import com.faculte.mandatPersonnel.model.service.SousProjetService;
 import com.faculte.mandatPersonnel.rest.converter.ProjetConverter;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -80,7 +82,11 @@ public class ProjetRest {
         return new ProjetConverter().toVo(projetService.chercherProjet(projetVo.getLibelleP()));
     }
     
-    
+    @PutMapping("/updateProjet")
+    public int updateProjet(@RequestBody ProjetVo projetVo) {
+       return projetService.updateProjet(new ProjetConverter().toItem(projetVo));
+    }
+        
     //------------------------------------Getter & Setter-----------------------------------------//
     public ProjetService getProjetService() {
         return projetService;

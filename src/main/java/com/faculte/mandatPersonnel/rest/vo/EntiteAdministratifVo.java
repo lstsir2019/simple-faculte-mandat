@@ -18,6 +18,9 @@ public class EntiteAdministratifVo {
     private String referenceEntiteAdministratif;
     private SousProjetVo sousProjetVo;
     private TypeEntiteAdministratifVo typeEntiteAdministratifVo;
+    private PersonnelVo chefVo;
+    
+    
     public Long getId() {
         return id;
     }
@@ -48,6 +51,14 @@ public class EntiteAdministratifVo {
 
     public void setTypeEntiteAdministratifVo(TypeEntiteAdministratifVo typeEntiteAdministratifVo) {
         this.typeEntiteAdministratifVo = typeEntiteAdministratifVo;
+    }
+
+    public PersonnelVo getChefVo() {
+        return chefVo;
+    }
+
+    public void setChefVo(PersonnelVo chefVo) {
+        this.chefVo = chefVo;
     }
 
     

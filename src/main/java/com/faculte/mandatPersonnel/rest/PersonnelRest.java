@@ -79,6 +79,7 @@ public class PersonnelRest {
 
     @PutMapping("/updatePersonnel")
     public int updatePersonnel(@RequestBody PersonnelVo personnelVo) {
+        System.out.println(" ha l personnel =====>" + personnelVo.getNom());
         return personnelService.updatePersonnel(new PersonnelConverter().toItem(personnelVo));
     }
 

@@ -23,5 +23,7 @@ public interface ProjetService {
     public int deleteByLibelleP(String libelleP);
 
     public List<Projet> chercherProjet(String libelleP);
+    
+    public int updateProjet(Projet projet);
 
 }

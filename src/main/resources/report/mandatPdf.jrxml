@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9f286f8f-111c-4e44-9c82-8a9f7123c308">
+	<property name="ireport.zoom" value="0.9090909090909091"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="395"/>
+	<field name="dateDebutMandat" class="java.util.Date"/>
+	<field name="dateFinMandat" class="java.util.Date"/>
+	<field name="personnel.nom" class="java.lang.String"/>
+	<field name="personnel.prenom" class="java.lang.String"/>
+	<field name="entiteAdministratif.referenceEntiteAdministratif" class="java.lang.String"/>
+	<field name="responsabilite.referenceResponsabilite" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="126" splitType="Stretch">
+			<image>
+				<reportElement x="116" y="-18" width="310" height="117" uuid="84b1ec5c-e82e-4fc8-bc05-6591ac30f757"/>
+				<imageExpression><![CDATA["C:\\Users\\abdou\\Documents\\NetBeansProjects\\simple-faculte-mandat\\src\\main\\resources\\assets\\img\\Dessin12.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="335" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="143" width="188" height="42" uuid="c8e57fb4-4733-4e35-a218-132219cdb89b"/>
+				<textElement textAlignment="Center">
+					<font size="22" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Nom et Prénom ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="200" y="186" width="184" height="29" uuid="b06083f8-267d-420e-8056-8056f30a8b54"/>
+				<textElement textAlignment="Center">
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personnel.nom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="185" width="160" height="29" uuid="f2c91fa8-2d97-4ee4-9876-da5a04bf55d2"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personnel.prenom}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="126" y="245" width="198" height="32" uuid="3ffaae7e-57b7-4e1d-80e7-cb1929d6daa3"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Responsabilité :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="291" y="244" width="204" height="32" uuid="370ed9f4-0702-4cb6-8d24-c7ea98999278"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{responsabilite.referenceResponsabilite}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="-22" y="74" width="599" height="9" backcolor="#000066" uuid="55229aa3-222c-4487-bec5-b7a529f69b97"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="37" y="1" width="486" height="61" uuid="26d9a5e3-58e4-468a-9215-42bc5db36df3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="33" isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[INFORMATIONS MANDAT]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="-24" y="-21" width="599" height="9" backcolor="#000066" uuid="24b2810a-0f0d-4d7f-89f3-29a1dfcc4477"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="159" y="186" width="99" height="28" uuid="9d7f78a4-7341-4ef1-a9e0-260862e75ce9"/>
+				<textElement textAlignment="Right">
+					<font size="22" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Mme/Mr .]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="194" y="0" width="167" height="20" uuid="ed59a066-bf82-4490-aa04-10b84660830e"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date fin du mandat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="0" width="158" height="20" uuid="00a355ca-b827-42c9-9e7f-2f9ccd833120"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date début du mandat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="361" y="0" width="154" height="20" uuid="5cbc47cb-c32b-445d-8e75-caa96a988365"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entité administrative]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="36" y="0" width="158" height="20" uuid="b150cf7f-955d-4e89-b1dd-abb02a5636db"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateDebutMandat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="194" y="0" width="167" height="20" uuid="00ea9a2b-7ee5-44c7-920a-5bf0bea6fb40"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateFinMandat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="361" y="0" width="154" height="20" uuid="904b6ae0-be69-4f3f-be78-61f92807d213"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entiteAdministratif.referenceEntiteAdministratif}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="214" splitType="Stretch">
+			<image>
+				<reportElement x="166" y="7" width="220" height="200" uuid="375c32d5-fdf1-4282-8ce5-8c2a04a35359"/>
+				<imageExpression><![CDATA["C:\\Users\\abdou\\Documents\\NetBeansProjects\\simple-faculte-mandat\\src\\main\\resources\\assets\\img\\logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="58" splitType="Stretch">
+			<staticText>
+				<reportElement x="189" y="12" width="210" height="16" uuid="0e93606d-463b-4037-abeb-46df8da28be2"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Faculté des Sciences et Techniques]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="28" width="320" height="30" uuid="7f1d52f2-6984-4101-b1e1-7596027aaf9c"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[B.P 549, Av.Abdelkarim Elkhattabi, Guéliz Marrakech
+  Tél : (+212) 524 43 34 04  Fax: (+212) 524 43 31 70 ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="-22" y="1" width="598" height="9" backcolor="#000066" uuid="bbf425a9-d592-47be-a358-e6a4940fa897"/>
+			</rectangle>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

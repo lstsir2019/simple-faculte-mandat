@@ -82,31 +82,14 @@ public class PersonnelServiceImpl implements PersonnelService {
 
     @Override
     public int updatePersonnel(Personnel personnel) {
-        Personnel p = findByCin(personnel.getCin());
-        if (p == null) {
-            return -1;
-        } else {
-            p.setCin(personnel.getCin());
-            p.setNom(personnel.getNom());
-            p.setReferenceEchelle(personnel.getReferenceEchelle());
-            p.setReferenceEchelon(personnel.getReferenceEchelon());
-            p.setDateAccesFonctionPublique(personnel.getDateAccesFonctionPublique());
-            p.setDateActivation(personnel.getDateActivation());
-            p.setDateDebutTypePersonnel(personnel.getDateDebutTypePersonnel());
-            p.setDateExerciceEchelle(personnel.getDateExerciceEchelle());
-            p.setDateNaissance(personnel.getDateNaissance());
-            p.setEtatSocial(personnel.getEtatSocial());
-            p.setGrade(personnel.getGrade());
-            p.setLieuAffectation(personnel.getLieuAffectation());
-            p.setLieuNaissance(personnel.getLieuNaissance());
-            p.setNombreEnfants(personnel.getNombreEnfants());
-            p.setNumeroLocation(personnel.getNumeroLocation());
-            p.setPrenom(personnel.getPrenom());
-            typePersonnelService.updateTypePersonnel(personnel.getTypePersonnel());
-            personnelDao.save(p);
+        System.out.println("personnel :"+personnel.getCin()+" "+personnel.getId());
+            TypePersonnel tp = typePersonnelService.findByLibelle(personnel.getTypePersonnel().getLibelle());
+            System.out.println(" type :"+personnel.getTypePersonnel().getLibelle());
+            personnel.setTypePersonnel(tp);
+            personnelDao.save(personnel);
+            System.out.println("update personnel======> " + personnel.getNom());
             return 1; 
 
-        }
     }
     
     

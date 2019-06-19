@@ -17,4 +17,5 @@ public interface ResponsabiliteService {
     public Responsabilite findByReferenceResponsabilite(String referenceResponsabilite);
     public List<Responsabilite> findAll();
     public int deleteByReferenceResponsabilite(String referenceResponsabilite);
+    public int updateResponsabilite(Responsabilite responsabilite);
 }

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c6cf6428-c8b8-4cc6-80ba-fc558516adbc">
+	<property name="ireport.zoom" value="0.9090909090909091"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
+	<field name="referenceEntiteAdministratif" class="java.lang.String"/>
+	<field name="typeEntiteAdministratif.libelle" class="java.lang.String"/>
+	<field name="sousProjet.referenceSousProjet" class="java.lang.String"/>
+	<field name="chef.nom" class="java.lang.String"/>
+	<field name="chef.prenom" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="219" splitType="Stretch">
+			<image>
+				<reportElement x="127" y="-18" width="289" height="113" uuid="49a59649-7332-442e-ba5f-38f8e0956b13"/>
+				<imageExpression><![CDATA["C:\\Users\\abdou\\Documents\\NetBeansProjects\\simple-faculte-mandat\\src\\main\\resources\\assets\\img\\Dessin12.png"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="-23" y="198" width="596" height="9" backcolor="#000066" uuid="5daca4d3-1afe-468c-a54f-455db072e992"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="28" y="122" width="488" height="71" uuid="04211117-55d5-4f99-a2ed-f3c24cb23056"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="25" isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[INFORMATIONS ENTITE ADMINISTRATIVE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="162" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-23" y="-109" width="596" height="9" backcolor="#000066" uuid="9954a07f-ee3e-414b-835e-84db76f3ca08"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="65" y="55" width="239" height="31" uuid="a2b7b1a1-72a2-4042-89ba-4452ae3472f7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entité  Administrative :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="296" y="61" width="235" height="31" uuid="04701acd-9667-4086-a302-4c1906501b8a"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{referenceEntiteAdministratif}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="58" y="69" width="9" height="4" backcolor="#0066CC" uuid="5f09e768-dca6-4941-b919-2af9620e1ae0"/>
+			</rectangle>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="-6" y="0" width="155" height="28" uuid="b4d6cb5c-8df6-4f6d-8fcc-a6f8de4feda1"/>
+				<box>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="Serif" size="16" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Nom et Prénom :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="168" y="0" width="181" height="28" uuid="584285de-c859-4ed2-a835-6d28b13a9e37"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Serif" size="16" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Sous projet  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="353" y="0" width="202" height="28" uuid="f40e3c69-430c-49aa-a084-784da4d0f61d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="16" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Type Entite Administrative]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="183" y="0" width="178" height="20" uuid="1ff14311-ee1f-432b-89e2-77b514afbc1d"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sousProjet.referenceSousProjet}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="379" y="0" width="186" height="20" uuid="0e81748a-e80d-46cf-8ef8-bb1af2160c8b"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{typeEntiteAdministratif.libelle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="0" width="130" height="20" uuid="6fc02f0d-95ac-4734-bfc2-f3b20782798b"/>
+				<box>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chef.nom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="98" y="0" width="106" height="20" uuid="7f1eec97-cf07-4b24-ab2b-f2eb54f8f1c9"/>
+				<box>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chef.prenom}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="0" width="23" height="20" uuid="3328a572-0c01-4cb5-b434-4338d168c771"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Pr.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="235" splitType="Stretch">
+			<image>
+				<reportElement x="153" y="12" width="234" height="217" uuid="c6ea8148-482f-4595-b740-82ca15eff449"/>
+				<imageExpression><![CDATA["C:\\Users\\abdou\\Documents\\NetBeansProjects\\simple-faculte-mandat\\src\\main\\resources\\assets\\img\\logo.png"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="-23" y="226" width="591" height="9" backcolor="#000066" uuid="e06db8c8-727c-45ee-8e75-7339c01f9252"/>
+			</rectangle>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement x="124" y="17" width="320" height="30" uuid="d3e36cb4-4073-44b7-bdde-7bd70974fc71"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[B.P 549, Av.Abdelkarim Elkhattabi, Guéliz Marrakech
+  Tél : (+212) 524 43 34 04  Fax: (+212) 524 43 31 70 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="171" y="1" width="210" height="16" uuid="6403ee1e-a00c-4505-ab64-ca4aecb90d33"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Faculté des Sciences et Techniques]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

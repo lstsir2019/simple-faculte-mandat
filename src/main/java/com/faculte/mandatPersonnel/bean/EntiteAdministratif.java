@@ -7,10 +7,12 @@ package com.faculte.mandatPersonnel.bean;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -31,6 +33,11 @@ public class EntiteAdministratif implements Serializable {
     @ManyToOne
     private SousProjet sousProjet;
 
+   
+    
+    @OneToOne(fetch = FetchType.LAZY)
+    private Personnel chef ;
+    
     public Long getId() {
         return id;
     }
@@ -61,6 +68,14 @@ public class EntiteAdministratif implements Serializable {
 
     public void setTypeEntiteAdministratif(TypeEntiteAdministratif typeEntiteAdministratif) {
         this.typeEntiteAdministratif = typeEntiteAdministratif;
+    }
+
+    public Personnel getChef() {
+        return chef;
+    }
+
+    public void setChef(Personnel chef) {
+        this.chef = chef;
     }
 
     

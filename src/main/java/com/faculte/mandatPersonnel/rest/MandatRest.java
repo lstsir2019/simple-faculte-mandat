@@ -5,17 +5,26 @@
  */
 package com.faculte.mandatPersonnel.rest;
 
+import com.example.produitv2.commun.GeneratePdf;
+import com.faculte.mandatPersonnel.bean.Mandat;
 import com.faculte.mandatPersonnel.model.service.MandatService;
 import com.faculte.mandatPersonnel.model.service.SousProjetService;
 import com.faculte.mandatPersonnel.rest.converter.MandatConverter;
 import com.faculte.mandatPersonnel.rest.vo.MandatVo;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -75,6 +84,24 @@ public class MandatRest {
     }
 
 
+     @GetMapping("/mandatPersonnel/{cin}/pdf")
+    // @Produces("application/pdf")
+    public ResponseEntity<Object> report(@PathVariable("cin") String cin) throws JRException, IOException {
+        Map<String, Object> parameters = new HashMap<>();
+        Mandat mandat = mandatService.findByPersonnelCin(cin);
+//        parameters.put("cin", mandat.getPersonnel().getCin());
+//        parameters.put("referenceEntiteAdministratif",mandat.getEntiteAdministratif().getReferenceEntiteAdministratif());
+//        parameters.put("referenceResponsabilite", mandat.getResponsabilite().getReferenceResponsabilite());
+        List<Mandat> m = new ArrayList<>();
+        m.add(mandat);
+        return GeneratePdf.generate("mandat", parameters, m, "/report/mandatPdf.jasper");
+    }
+
+    
+     @PutMapping("/updateMandat")
+    public int updateMandat(@RequestBody MandatVo mandatVo) {
+        return mandatService.updateMandat(new MandatConverter().toItem(mandatVo));
+    }
     //-------------------------------------------------GETTER & SETTER---------------------------------------------------//
     
     

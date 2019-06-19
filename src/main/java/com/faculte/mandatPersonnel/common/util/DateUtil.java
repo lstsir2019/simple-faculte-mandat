@@ -32,7 +32,7 @@ public class DateUtil {
     public static Date parse(String date) {
         if (date != null) {
             try {
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy");
+                  SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 return simpleDateFormat.parse(date);
             } catch (ParseException ex) {
                 return null;

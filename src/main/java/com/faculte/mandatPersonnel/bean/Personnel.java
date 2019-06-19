@@ -52,6 +52,8 @@ public class Personnel implements Serializable {
     private Date dateDebutTypePersonnel;
     private String referenceEchelle;
     private String referenceEchelon;
+    @OneToOne(fetch = FetchType.LAZY ,mappedBy = "chef")
+    private EntiteAdministratif entiteAdministratif;
  
     public Personnel() {
     }
@@ -186,7 +188,18 @@ public class Personnel implements Serializable {
     public void setTypePersonnel(TypePersonnel typePersonnel) {
         this.typePersonnel = typePersonnel;
     }
+    
+    @JsonIgnore
+    public EntiteAdministratif getEntiteAdministratif() {
+        return entiteAdministratif;
+    }
 
+    @JsonSetter
+    public void setEntiteAdministratif(EntiteAdministratif entiteAdministratif) {
+        this.entiteAdministratif = entiteAdministratif;
+    }
+
+    
     public Date getDateDebutTypePersonnel() {
         return dateDebutTypePersonnel;
     }

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  *
  * @author abdou
  */
-@FeignClient(name ="sample-faculte-evolution", url="localhost:8099")
+@FeignClient(name ="sample-faculte-evolution", url="localhost:8015")
 public interface EvolutionProxy {
     
     @GetMapping("/evolution/echelle/reference/{reference}")

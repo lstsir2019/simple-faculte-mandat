@@ -49,15 +49,14 @@ public class ResponsabiliteServiceImlp implements ResponsabiliteService {
 
     }
 
-    public ResponsabiliteDao getResponsabiliteDao() {
-        return responsabiliteDao;
+        @Override
+    public int updateResponsabilite(Responsabilite responsabilite) {
+        responsabiliteDao.save(responsabilite);
+        return 1;
     }
 
-    public void setResponsabiliteDao(ResponsabiliteDao responsabiliteDao) {
-        this.responsabiliteDao = responsabiliteDao;
-    }
-
-    @Override
+    
+       @Override
     public int deleteByReferenceResponsabilite(String referenceResponsabilite) {
          Responsabilite r = responsabiliteService.findByReferenceResponsabilite(referenceResponsabilite);
           if (r == null) {
@@ -67,5 +66,15 @@ public class ResponsabiliteServiceImlp implements ResponsabiliteService {
             return 1;
         }
     }
+    public ResponsabiliteDao getResponsabiliteDao() {
+        return responsabiliteDao;
+    }
+
+    public void setResponsabiliteDao(ResponsabiliteDao responsabiliteDao) {
+        this.responsabiliteDao = responsabiliteDao;
+    }
+
+ 
+
 
 }

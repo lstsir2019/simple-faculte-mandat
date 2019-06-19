@@ -46,8 +46,11 @@ public class SousProjetServiceImpl implements SousProjetService {
     private EntityManager entityManager;
 
     @Override
-    public int creerSousProjet(SousProjet sousProjet, Long projet) {
-        List<SousProjet> sps = entityManager.createQuery("SELECT sp From SousProjet sp where sp.referenceSousProjet='" + sousProjet.getReferenceSousProjet() + "' and sp.projet.id=" + projet).getResultList();
+    public int creerSousProjet(SousProjet sousProjet, String projet) {
+        String query = "SELECT sp From SousProjet sp where sp.referenceSousProjet='" 
+                + sousProjet.getReferenceSousProjet() + "' and sp.projet.libelleP='" 
+                + projet+"'";
+        List<SousProjet> sps = entityManager.createQuery(query).getResultList();
         if (sps.isEmpty()) {
             sousProjetDao.save(sousProjet);
         }

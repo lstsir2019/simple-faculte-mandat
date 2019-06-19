@@ -20,5 +20,6 @@ public interface EntiteAdministratifDao extends JpaRepository<EntiteAdministrati
      public List<EntiteAdministratif> findByTypeEntiteAdministratifReference(int reference);
      public EntiteAdministratif findByTypeEntiteAdministratifLibelle(String libelle);
      public EntiteAdministratif findByreferenceEntiteAdministratifAndTypeEntiteAdministratifReference(String refEnti,int refType);
+     public EntiteAdministratif findByChef(String cin);
 }
 
